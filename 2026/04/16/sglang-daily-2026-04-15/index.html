@@ -1,0 +1,522 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Sglang 每日变更总结 - 2026-04-15 | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Sglang 每日变更总结 (2026-04-15 UTC+8) 统计时间范围：2026-04-15 00:00:00 ~ 2026-04-15 23:59:59 (UTC+8)共计 26 个 commit 合并到 main 分支。   一、新功能1. Ray DataParallel 支持新增了基于 Ray 的 DataParallel（DP）和 DP Attention 支持，允许通过 Ray">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sglang 每日变更总结 - 2026-04-15">
+<meta property="og:url" content="http://example.com/2026/04/16/sglang-daily-2026-04-15/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Sglang 每日变更总结 (2026-04-15 UTC+8) 统计时间范围：2026-04-15 00:00:00 ~ 2026-04-15 23:59:59 (UTC+8)共计 26 个 commit 合并到 main 分支。   一、新功能1. Ray DataParallel 支持新增了基于 Ray 的 DataParallel（DP）和 DP Attention 支持，允许通过 Ray">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
+<meta property="article:published_time" content="2026-04-15T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-04-16T03:05:21.814Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Daily Summary">
+<meta property="article:tag" content="Sglang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Sglang 每日变更总结 - 2026-04-15",
+  "url": "http://example.com/2026/04/16/sglang-daily-2026-04-15/",
+  "image": "http://example.com/img/butterfly-icon.png",
+  "datePublished": "2026-04-15T16:00:00.000Z",
+  "dateModified": "2026-04-16T03:05:21.814Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "John Doe",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2026/04/16/sglang-daily-2026-04-15/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Sglang 每日变更总结 - 2026-04-15',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hexo</span></a><a class="nav-page-title" href="/"><span class="site-name">Sglang 每日变更总结 - 2026-04-15</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">Sglang 每日变更总结 - 2026-04-15</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-04-15T16:00:00.000Z" title="Created 2026-04-16 00:00:00">2026-04-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-04-16T03:05:21.814Z" title="Updated 2026-04-16 11:05:21">2026-04-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Sglang/">Sglang</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="Sglang-每日变更总结-2026-04-15-UTC-8"><a href="#Sglang-每日变更总结-2026-04-15-UTC-8" class="headerlink" title="Sglang 每日变更总结 (2026-04-15 UTC+8)"></a>Sglang 每日变更总结 (2026-04-15 UTC+8)</h2><blockquote>
+<p>统计时间范围：2026-04-15 00:00:00 ~ 2026-04-15 23:59:59 (UTC+8)<br>共计 <strong>26</strong> 个 commit 合并到 main 分支。</p>
+</blockquote>
+<hr>
+<h2 id="一、新功能"><a href="#一、新功能" class="headerlink" title="一、新功能"></a>一、新功能</h2><h3 id="1-Ray-DataParallel-支持"><a href="#1-Ray-DataParallel-支持" class="headerlink" title="1. Ray DataParallel 支持"></a>1. Ray DataParallel 支持</h3><p>新增了基于 Ray 的 DataParallel（DP）和 DP Attention 支持，允许通过 Ray Engine 进行分布式部署。</p>
+<table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>总结</th>
+<th>PR 链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[Ray] Add data parallel (DP) and DP attention support to RayEngine (#21887)</code></td>
+<td>新增 RayDataParallelController，用 Ray SchedulerActor 替代 multiprocessing.Process 实现 DP&#x2F;DP Attention 分布式推理</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/21887">PR #21887</a></td>
+</tr>
+</tbody></table>
+<h3 id="2-Diffusion-RL-训练支持"><a href="#2-Diffusion-RL-训练支持" class="headerlink" title="2. Diffusion RL 训练支持"></a>2. Diffusion RL 训练支持</h3><p>为 T2I（Text-to-Image）后训练新增了完整的 RL rollout 能力，包括独立 rollout API、去噪环境回传和 SP 对齐的 log-prob 计算。</p>
+<table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>总结</th>
+<th>PR 链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[diffusion] rl: support standalone rollout api, denoising environment backpass and sp-aligned log-prob for T2I post-training (#22604)</code></td>
+<td>新增 standalone rollout API、denoising 环境回传机制和 sequence-parallel 对齐的 log-prob 计算，支持 Qwen Image 和 ZImage pipeline</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22604">PR #22604</a></td>
+</tr>
+</tbody></table>
+<h3 id="3-Pooler-返回-pooled-hidden-states"><a href="#3-Pooler-返回-pooled-hidden-states" class="headerlink" title="3. Pooler 返回 pooled_hidden_states"></a>3. Pooler 返回 pooled_hidden_states</h3><p>多个 Reward Model（Llama、Gemma2、InternLM2、Qwen2）和 pooler 层新增 <code>pooled_hidden_states</code> 字段返回能力，支持在分类&#x2F;打分同时获取原始隐藏状态。</p>
+<table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>总结</th>
+<th>PR 链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[Score API] Add return_pooled_hidden_states to Scoring API for SequenceClassification / RewardModel (#22427)</code></td>
+<td>pooler.py 抽取 pool_hidden_states 公共函数；Llama&#x2F;Gemma2&#x2F;InternLM2&#x2F;Qwen2 RM 返回 pooled_hidden_states，支持 MIS 路径</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22427">PR #22427</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="二、性能优化"><a href="#二、性能优化" class="headerlink" title="二、性能优化"></a>二、性能优化</h2><h3 id="1-AMD-Qwen3-5-优化"><a href="#1-AMD-Qwen3-5-优化" class="headerlink" title="1. AMD &#x2F; Qwen3.5 优化"></a>1. AMD &#x2F; Qwen3.5 优化</h3><p>针对 AMD GPU 上的 Qwen3.5 模型进行了两项关键优化：share expert fusion 和 fused Triton kernel。</p>
+<table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>总结</th>
+<th>PR 链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[AMD] Enable share expert fusion with router experts for Qwen3.5 BF16 &amp; FP8 (#20736)</code></td>
+<td>为 Qwen2MoE 和 Qwen3_5 启用 share expert fusion with router experts，支持 BF16 和 FP8 精度</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/20736">PR #20736</a></td>
+</tr>
+<tr>
+<td><code>[AMD] Optimize _append_shared_to_topk_output by a single fused Triton kernel for Qwen3.5 (#22844)</code></td>
+<td>将 _append_shared_to_topk_output 融合为单个 Triton kernel，减少 Qwen3.5 在 AMD 上的 MoE topk 计算开销</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22844">PR #22844</a></td>
+</tr>
+</tbody></table>
+<h3 id="2-Serving-层性能优化"><a href="#2-Serving-层性能优化" class="headerlink" title="2. Serving 层性能优化"></a>2. Serving 层性能优化</h3><p>将 stream_buffer 的字符串拼接从 O(n²) 优化为基于整数偏移的 O(n) 操作。</p>
+<table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>总结</th>
+<th>PR 链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[serving] replace O(n²) stream_buffer string concat with integer offset (#22606)</code></td>
+<td>用整数偏移替代字符串拼接，将 streaming chat&#x2F;completions 的 buffer 操作从 O(n²) 降至 O(n)</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22606">PR #22606</a></td>
+</tr>
+</tbody></table>
+<h3 id="3-Step3p5-模型优化"><a href="#3-Step3p5-模型优化" class="headerlink" title="3. Step3p5 模型优化"></a>3. Step3p5 模型优化</h3><p>Step3p5 模型的 MoE 层通信优化：share_expert 和 MoE 输出先合并再统一 all-reduce，每层节省一次 TP all-reduce。同时移除了中间张量 dump 代码。</p>
+<table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>总结</th>
+<th>PR 链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[Step3p5] Optimize allreduce in MoE layers (#22773)</code></td>
+<td>share_expert 设置 reduce_results&#x3D;False，与 MoE 输出合并后单次 all-reduce；移除 SGLANG_DUMP_STEP3P5_INTERMEDIATE 调试代码；layer_id 查找从 list 改为 set</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22773">PR #22773</a></td>
+</tr>
+</tbody></table>
+<h3 id="4-其他优化"><a href="#4-其他优化" class="headerlink" title="4. 其他优化"></a>4. 其他优化</h3><table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>总结</th>
+<th>PR 链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[Misc] Use cache_once for is_arch_support_pdl in sgl-kernel (#22725)</code></td>
+<td>sgl-kernel 中 is_arch_support_pdl 使用 cache_once 缓存，避免重复检测</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22725">PR #22725</a></td>
+</tr>
+<tr>
+<td><code>[diffusion] chore: auto-enable best parallel setting if unspecified (#22763)</code></td>
+<td>Diffusion 未指定并行配置时自动启用最优并行设置</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22763">PR #22763</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="三、Bug-Fix"><a href="#三、Bug-Fix" class="headerlink" title="三、Bug Fix"></a>三、Bug Fix</h2><h3 id="1-Streaming-Session-修复（系列）"><a href="#1-Streaming-Session-修复（系列）" class="headerlink" title="1. Streaming Session 修复（系列）"></a>1. Streaming Session 修复（系列）</h3><p>对 streaming session 进行了一系列内存泄漏和计数修复。</p>
+<table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>总结</th>
+<th>PR 链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Streaming session: fix retract tail leak via _free_tail (#22862)</code></td>
+<td>通过 _free_tail 修复 retract 时 tail 内存泄漏问题，重构 session_aware_cache 的 free 逻辑</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22862">PR #22862</a></td>
+</tr>
+<tr>
+<td><code>Refactor streaming session abort handling (#22790)</code></td>
+<td>重构 streaming session abort 处理流程，改进 session_controller 和 session_aware_cache 的异常处理</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22790">PR #22790</a></td>
+</tr>
+<tr>
+<td><code>Fix streaming session busy-check double-counting via active_pool_idxs (#22753)</code></td>
+<td>通过 active_pool_idxs 修复 streaming session busy-check 重复计数问题</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22753">PR #22753</a></td>
+</tr>
+<tr>
+<td><code>Rename _alive_streaming_session_count; use _is_streaming helper (#22755)</code></td>
+<td>重命名 _alive_streaming_session_count，统一使用 _is_streaming 辅助函数</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22755">PR #22755</a></td>
+</tr>
+</tbody></table>
+<h3 id="2-HiCache-HiSparse-修复"><a href="#2-HiCache-HiSparse-修复" class="headerlink" title="2. HiCache &#x2F; HiSparse 修复"></a>2. HiCache &#x2F; HiSparse 修复</h3><table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>总结</th>
+<th>PR 链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[HiCache]Fix CP support for hybrid model (#22782)</code></td>
+<td>修复 hybrid model 在 Context Parallel 下的 HiCache 支持</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22782">PR #22782</a></td>
+</tr>
+<tr>
+<td><code>[HiCache] Fix memory host free logic when share_indices_with_anchor enabled (#22767)</code></td>
+<td>修复 share_indices_with_anchor 启用时 memory pool host 的 free 逻辑</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22767">PR #22767</a></td>
+</tr>
+<tr>
+<td><code>[HiSparse][BugFix]: Fix the memory leak issue during health checks. (#22882)</code></td>
+<td>修复 health check 期间的内存泄漏问题</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22882">PR #22882</a></td>
+</tr>
+</tbody></table>
+<h3 id="3-其他-Bug-Fix"><a href="#3-其他-Bug-Fix" class="headerlink" title="3. 其他 Bug Fix"></a>3. 其他 Bug Fix</h3><table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>总结</th>
+<th>PR 链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[BugFix] Fix EAGLE speculative decoding missing grammar-based finish (#21723)</code></td>
+<td>修复 EAGLE 投机解码在 grammar-based finish 条件下缺失的问题</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/21723">PR #21723</a></td>
+</tr>
+<tr>
+<td><code>[VLM] fix LFM2-VL offline inference and GPU JPEG decode (#22448)</code></td>
+<td>修复 LFM2-VL 离线推理和 GPU JPEG 解码问题</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22448">PR #22448</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="四、模型相关修改"><a href="#四、模型相关修改" class="headerlink" title="四、模型相关修改"></a>四、模型相关修改</h2><table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>总结</th>
+<th>PR 链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[AMD] Enable share expert fusion with router experts for Qwen3.5 BF16 &amp; FP8 (#20736)</code></td>
+<td>Qwen2MoE&#x2F;Qwen3_5 启用 AMD share expert fusion</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/20736">PR #20736</a></td>
+</tr>
+<tr>
+<td><code>[AMD] Optimize _append_shared_to_topk_output by a single fused Triton kernel for Qwen3.5 (#22844)</code></td>
+<td>Qwen3.5 MoE topk 输出融合 Triton kernel</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22844">PR #22844</a></td>
+</tr>
+<tr>
+<td><code>[VLM] Enable per-image ViT cache and avoid TP CUDA context creation for Kimi-K2.5 (#22858)</code></td>
+<td>KimiK25 移除 vision_tower_forward_auto 函数，直接使用 vision_tower + mm_projection_auto；修复 grid_thws 字段名为 image_grid_thw</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22858">PR #22858</a></td>
+</tr>
+<tr>
+<td><code>[Bugfix] Preserve auto-detected quant_config for GLM NextN draft model (#22823)</code></td>
+<td>GLM4 MoE NextN 修复 needs_quant_draft 判断条件，增加 quant_config is not None 检查</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22823">PR #22823</a></td>
+</tr>
+<tr>
+<td><code>[Step3p5] Optimize allreduce in MoE layers (#22773)</code></td>
+<td>Step3p5 MoE 通信优化和调试代码清理</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22773">PR #22773</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="五、server-args-py-变更"><a href="#五、server-args-py-变更" class="headerlink" title="五、server_args.py 变更"></a>五、server_args.py 变更</h2><table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>总结</th>
+<th>PR 链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Cleanup server_args.py and minor code tidying (#22820)</code></td>
+<td>代码整理：重新组织常量定义顺序（按字母&#x2F;逻辑分组）；新增空白行分隔逻辑块；移除 <code>add_mamba_ssm_dtype_choices</code> 扩展函数，将 <code>--mamba-ssm-dtype</code> 的 choices 改为内联字面量 <code>[&quot;float32&quot;, &quot;bfloat16&quot;, &quot;float16&quot;]</code>。无新增参数。</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22820">PR #22820</a></td>
+</tr>
+</tbody></table>
+<p><strong>新增参数：</strong> 今日无新增 server_args 参数。<br><strong>移除参数：</strong> 移除了 <code>add_mamba_ssm_dtype_choices</code> 扩展函数（功能不变，仅改为内联）。</p>
+<hr>
+<h2 id="六、环境变量变更"><a href="#六、环境变量变更" class="headerlink" title="六、环境变量变更"></a>六、环境变量变更</h2><table>
+<thead>
+<tr>
+<th>环境变量</th>
+<th>说明</th>
+<th>相关 PR</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>无新增</td>
+<td>今日 commit 中未发现新增环境变量。代码中涉及的环境变量 <code>SGLANG_SET_CPU_AFFINITY</code>、<code>SGLANG_NUMA_BIND_V2</code>、<code>SGLANG_USE_AITER</code> 为已有变量的使用。</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="七、CI-文档-其他"><a href="#七、CI-文档-其他" class="headerlink" title="七、CI &#x2F; 文档 &#x2F; 其他"></a>七、CI &#x2F; 文档 &#x2F; 其他</h2><h3 id="CI"><a href="#CI" class="headerlink" title="CI"></a>CI</h3><table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>总结</th>
+<th>PR 链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[AMD][CI] Add GLM-5-MXFP4 accuracy and perf nightly tests for MI35x (#21773)</code></td>
+<td>为 MI35x 新增 GLM-5-MXFP4 精度和性能 nightly 测试</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/21773">PR #21773</a></td>
+</tr>
+<tr>
+<td><code>ci: skip approval for nightly gb200 runs, keep for manual triggers (#22768)</code></td>
+<td>GB200 nightly 运行跳过 approval，手动触发保留</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22768">PR #22768</a></td>
+</tr>
+<tr>
+<td><code>Update CI Permissions (#22826)</code></td>
+<td>更新 CI 权限配置</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22826">PR #22826</a></td>
+</tr>
+<tr>
+<td><code>[diffusion] CI: refactor diffusion ci and reduce redundancy (#22810)</code></td>
+<td>重构 diffusion CI，减少冗余</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22810">PR #22810</a></td>
+</tr>
+<tr>
+<td><code>[diffusion] CI: reset thresholds (#22854)</code></td>
+<td>重置 diffusion CI 阈值</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22854">PR #22854</a></td>
+</tr>
+</tbody></table>
+<h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>总结</th>
+<th>PR 链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[NPU] Offloading docs update (#22860)</code></td>
+<td>更新 Ascend NPU offloading 文档</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22860">PR #22860</a></td>
+</tr>
+<tr>
+<td><code>[diffusion] quant: update modelopt quantization docs and CI coverage (#22772)</code></td>
+<td>更新 modelopt 量化文档和 CI 覆盖</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22772">PR #22772</a></td>
+</tr>
+<tr>
+<td><code>[Docs] Move ptxas sm_103a workaround into For CUDA 13 section (#22852)</code></td>
+<td>将 ptxas sm_103a workaround 文档移至 CUDA 13 章节</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22852">PR #22852</a></td>
+</tr>
+</tbody></table>
+<h3 id="基础设施"><a href="#基础设施" class="headerlink" title="基础设施"></a>基础设施</h3><table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>总结</th>
+<th>PR 链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[PD] Add a fallback to bypass rust dep for mini_lb (#21982)</code></td>
+<td>mini_lb 新增 fallback 机制，绕过 Rust 依赖</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/21982">PR #21982</a></td>
+</tr>
+<tr>
+<td><code>Add runai-model-streamer into Python packages installed in Dockerfile and fix NotADirectoryError Docker regression (#22537)</code></td>
+<td>Dockerfile 新增 runai-model-streamer 包，修复 NotADirectoryError Docker 回归</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22537">PR #22537</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="八、重点变更总结"><a href="#八、重点变更总结" class="headerlink" title="八、重点变更总结"></a>八、重点变更总结</h2><h3 id="新模型"><a href="#新模型" class="headerlink" title="新模型"></a>新模型</h3><p>今日没有新增全新模型的支持，但有对已有模型的重要改进：</p>
+<ul>
+<li><strong>Qwen3.5</strong>：AMD 平台上的 share expert fusion 和 fused Triton kernel 优化</li>
+<li><strong>Kimi-K2.5</strong>：vision tower forward 重构和字段名修复</li>
+<li><strong>GLM4 MoE NextN</strong>：quant draft 判断条件修复</li>
+</ul>
+<h3 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h3><ul>
+<li>AMD GPU 上 Qwen3.5 的 MoE share expert fusion 和 topk fused kernel</li>
+<li>Serving 层 stream_buffer 从 O(n²) 优化到 O(n)</li>
+<li>Step3p5 MoE 通信优化（节省每次 all-reduce）</li>
+<li>Diffusion 自动并行配置优化</li>
+</ul>
+<h3 id="Bug-Fix"><a href="#Bug-Fix" class="headerlink" title="Bug Fix"></a>Bug Fix</h3><ul>
+<li>Streaming session 系列修复（内存泄漏、abort 处理、busy-check 重复计数）</li>
+<li>HiCache CP 支持和 memory host free 逻辑修复</li>
+<li>HiSparse health check 内存泄漏修复</li>
+<li>EAGLE 投机解码 grammar-based finish 修复</li>
+<li>LFM2-VL 离线推理和 GPU JPEG 解码修复</li>
+</ul>
+<h3 id="server-args-py"><a href="#server-args-py" class="headerlink" title="server_args.py"></a>server_args.py</h3><p>无新增参数，仅做了代码整理和常量重排序。</p>
+<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p>无新增环境变量。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2026/04/16/sglang-daily-2026-04-15/">http://example.com/2026/04/16/sglang-daily-2026-04-15/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Daily-Summary/">Daily Summary</a><a class="post-meta__tags" href="/tags/Sglang/">Sglang</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/04/17/Sglang-Main-Branch-%E6%AF%8F%E6%97%A5%E5%8F%98%E6%9B%B4%E6%80%BB%E7%BB%93-2026-04-16/" title="Sglang Main Branch 每日变更总结 (2026-04-16)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">Sglang Main Branch 每日变更总结 (2026-04-16)</div></div><div class="info-2"><div class="info-item-1">Sglang Main Branch 每日变更总结日期: UTC+8 2026-04-16 (00:00 ~ 24:00)统计范围: 共 43 个 commits  一、新模型 &#x2F; 模型支持昨日的提交中没有引入全新的模型，但有多项对已有模型的增强支持。    Commit Message 总结 PR 链接    [VLM] Enable per-image ViT cache and avoid TP CUDA context creation for Kimi-K2.5 (#22858) 为 Kimi-K2.5 启用逐图像 ViT 缓存，避免 TP CUDA 上下文创建，降低显存占用 PR #22858   [EPD][VLM] Support Kimi VL EPD (#22490) 为 Kimi VL 模型添加 EPD（Encode-Prefill-Decode） disaggregation 支持 PR #22490   [Bugfix] Preserve auto-detected quant_config for GLM NextN draft model ...</div></div></div></a><a class="pagination-related" href="/2026/04/15/SGLang-Daily-Commit-Summary-2026-04-14/" title="SGLang Daily Commit Summary - 2026-04-14"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">SGLang Daily Commit Summary - 2026-04-14</div></div><div class="info-2"><div class="info-item-1">SGLang Main Branch Commit Summary (UTC+8 2026-04-14)统计时间范围：UTC+8 2026-04-14 00:00 至 2026-04-14 23:59（UTC 2026-04-13 16:00 至 2026-04-14 15:59） 共统计 46 个 commit。  一、新模型&#x2F;新功能支持本时段新增了对多个模型和功能的支持，包括扩散模型、量化格式、存储后端等。    Commit Message 总结 PR 链接    [diffusion] model: support Ltx 2.3 two stage ti2v (#22667) 为扩散模型添加 LTX 2.3 两阶段 text-to-video 生成支持 PR #22667   [diffusion] quant: add FLUX.1-dev modelopt nvfp4 support (#22672) 为 FLUX.1-dev 模型添加 ModelOpt NVFP4 量化支持 PR #22672   [HiCache &amp; HybridModel] ...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/04/17/Sglang-Main-Branch-%E6%AF%8F%E6%97%A5%E5%8F%98%E6%9B%B4%E6%80%BB%E7%BB%93-2026-04-16/" title="Sglang Main Branch 每日变更总结 (2026-04-16)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-17</div><div class="info-item-2">Sglang Main Branch 每日变更总结 (2026-04-16)</div></div><div class="info-2"><div class="info-item-1">Sglang Main Branch 每日变更总结日期: UTC+8 2026-04-16 (00:00 ~ 24:00)统计范围: 共 43 个 commits  一、新模型 &#x2F; 模型支持昨日的提交中没有引入全新的模型，但有多项对已有模型的增强支持。    Commit Message 总结 PR 链接    [VLM] Enable per-image ViT cache and avoid TP CUDA context creation for Kimi-K2.5 (#22858) 为 Kimi-K2.5 启用逐图像 ViT 缓存，避免 TP CUDA 上下文创建，降低显存占用 PR #22858   [EPD][VLM] Support Kimi VL EPD (#22490) 为 Kimi VL 模型添加 EPD（Encode-Prefill-Decode） disaggregation 支持 PR #22490   [Bugfix] Preserve auto-detected quant_config for GLM NextN draft model ...</div></div></div></a><a class="pagination-related" href="/2026/04/07/sglang-changelog-2026-04-02/" title="Sglang 代码变更总结 - 2026-04-02"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-07</div><div class="info-item-2">Sglang 代码变更总结 - 2026-04-02</div></div><div class="info-2"><div class="info-item-1">Sglang 代码变更总结 (UTC+8 2026-04-02) 本文总结了 Sglang 项目在 2026年4月2日（UTC+8 0时到24时） main 分支的所有 commit 变更，共计 41 个 commit。  总体概览   分类 Commit 数量 关键变更    新模型&#x2F;模型增强 3 GLM-4.7-Flash(NPU)、MiMo-V2-Flash reasoning parser、MiniMax-M2.5 FP8 MoE   性能优化&#x2F;Kernel 7 融合 temperature+softmax sampling、ngram corpus 迁移到 TVM FFI、trtllm sparse MLA kernel、NSA trtllm 默认(Blackwell)、DSA trtllm default、flashinfer_trtllm mxfp8 gemm、多线程权重加载默认启用   Bug Fix 6 spec_v2+logprob、multi tool streaming、PCG torch dynamo recompile、tokeni...</div></div></div></a><a class="pagination-related" href="/2026/04/07/sglang-changelog-2026-04-04/" title="Sglang 代码变更总结 - 2026-04-04"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-07</div><div class="info-item-2">Sglang 代码变更总结 - 2026-04-04</div></div><div class="info-2"><div class="info-item-1">Sglang 代码变更总结 (UTC+8 2026-04-04) 本文总结了 Sglang 项目在 2026年4月4日（UTC+8 0时到24时） main 分支的所有 commit 变更，共计 38 个 commit。  总体概览   分类 Commit 数量 关键变更    新模型&#x2F;模型增强 4 LFM2-VL 视觉语言模型、Reasoning Tokens Usage、Score API、GLM-4.7 加载格式   性能优化&#x2F;Kernel 8 LoRA CUDA Graph、FA4 Speculative Decoding、VLM Chunk-aware ViT、NVFP4 CUTLASS 默认、DSV3 router GEMM 基准、norm fusion、flashinfer 0.6.7.post2、kernel 0.4.1   Bug Fix 6 killall_sglang、spec decoding flaky test、mistral embedding 回归、XGrammarBackend reset、DP attention IPv6、...</div></div></div></a><a class="pagination-related" href="/2026/04/15/SGLang-Daily-Commit-Summary-2026-04-14/" title="SGLang Daily Commit Summary - 2026-04-14"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-15</div><div class="info-item-2">SGLang Daily Commit Summary - 2026-04-14</div></div><div class="info-2"><div class="info-item-1">SGLang Main Branch Commit Summary (UTC+8 2026-04-14)统计时间范围：UTC+8 2026-04-14 00:00 至 2026-04-14 23:59（UTC 2026-04-13 16:00 至 2026-04-14 15:59） 共统计 46 个 commit。  一、新模型&#x2F;新功能支持本时段新增了对多个模型和功能的支持，包括扩散模型、量化格式、存储后端等。    Commit Message 总结 PR 链接    [diffusion] model: support Ltx 2.3 two stage ti2v (#22667) 为扩散模型添加 LTX 2.3 两阶段 text-to-video 生成支持 PR #22667   [diffusion] quant: add FLUX.1-dev modelopt nvfp4 support (#22672) 为 FLUX.1-dev 模型添加 ModelOpt NVFP4 量化支持 PR #22672   [HiCache &amp; HybridModel] ...</div></div></div></a><a class="pagination-related" href="/2026/04/07/sglang-changelog-2026-04-06/" title="Sglang 代码变更总结 - 2026-04-06"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-07</div><div class="info-item-2">Sglang 代码变更总结 - 2026-04-06</div></div><div class="info-2"><div class="info-item-1">Sglang 代码变更总结 (UTC+8 2026-04-06) 本文总结了 Sglang 项目在 2026年4月6日（UTC+8 0时到24时） main 分支的所有 commit 变更，共计 24 个 commit。  总体概览   分类 Commit 数量 关键变更    新模型&#x2F;模型增强 1 LTX2.3 视频扩散模型   性能优化&#x2F;特性 4 Ngram Spec 外部语料库+后缀自动机、Ngram anchor match state、gfx95 量化格式缓存、TRT-LLM router_logits dtype   server_args.py 新增参数 3 --speculative-ngram-external-corpus-path、--speculative-ngram-external-sam-budget、--speculative-ngram-external-corpus-max-tokens   新增环境变量 4 SGLANG_DISAGG_STAGING_BUFFER、SGLANG_DISAGG_STAGING_BUFFER_...</div></div></div></a><a class="pagination-related" href="/2026/04/07/sglang-changelog-2026-04-05/" title="Sglang 代码变更总结 - 2026-04-05"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-07</div><div class="info-item-2">Sglang 代码变更总结 - 2026-04-05</div></div><div class="info-2"><div class="info-item-1">Sglang 代码变更总结 (UTC+8 2026-04-05) 本文总结了 Sglang 项目在 2026年4月5日（UTC+8 0时到24时） main 分支的所有 commit 变更，共计 23 个 commit。  总体概览   分类 Commit 数量 关键变更    新模型 1 Voxtral 语音转文本模型   性能优化&#x2F;特性 4 DeepSeek V3.2 IndexCache、AMD MLA FP8(Kimi K2.5)、Flux 2 精度修复、diffusion float64 平台支持   Bug Fix 3 Hi-MambaRadixTree 不变量违例、PD staging warmup、f-string 缺失前缀   server_args.py 新增参数 0 无   新增环境变量 0 无   CI&#x2F;Workflow&#x2F;工具 5 CI auto-bisect 工作流、failfast 标志、夜间测试修复、reasoning 测试整合、auto benchmark 暂停   Speculative Decoding 2 Spe...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">John Doe</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sglang-%E6%AF%8F%E6%97%A5%E5%8F%98%E6%9B%B4%E6%80%BB%E7%BB%93-2026-04-15-UTC-8"><span class="toc-number">1.</span> <span class="toc-text">Sglang 每日变更总结 (2026-04-15 UTC+8)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%96%B0%E5%8A%9F%E8%83%BD"><span class="toc-number">2.</span> <span class="toc-text">一、新功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Ray-DataParallel-%E6%94%AF%E6%8C%81"><span class="toc-number">2.1.</span> <span class="toc-text">1. Ray DataParallel 支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Diffusion-RL-%E8%AE%AD%E7%BB%83%E6%94%AF%E6%8C%81"><span class="toc-number">2.2.</span> <span class="toc-text">2. Diffusion RL 训练支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Pooler-%E8%BF%94%E5%9B%9E-pooled-hidden-states"><span class="toc-number">2.3.</span> <span class="toc-text">3. Pooler 返回 pooled_hidden_states</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">3.</span> <span class="toc-text">二、性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-AMD-Qwen3-5-%E4%BC%98%E5%8C%96"><span class="toc-number">3.1.</span> <span class="toc-text">1. AMD &#x2F; Qwen3.5 优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Serving-%E5%B1%82%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">3.2.</span> <span class="toc-text">2. Serving 层性能优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Step3p5-%E6%A8%A1%E5%9E%8B%E4%BC%98%E5%8C%96"><span class="toc-number">3.3.</span> <span class="toc-text">3. Step3p5 模型优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%85%B6%E4%BB%96%E4%BC%98%E5%8C%96"><span class="toc-number">3.4.</span> <span class="toc-text">4. 其他优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Bug-Fix"><span class="toc-number">4.</span> <span class="toc-text">三、Bug Fix</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Streaming-Session-%E4%BF%AE%E5%A4%8D%EF%BC%88%E7%B3%BB%E5%88%97%EF%BC%89"><span class="toc-number">4.1.</span> <span class="toc-text">1. Streaming Session 修复（系列）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-HiCache-HiSparse-%E4%BF%AE%E5%A4%8D"><span class="toc-number">4.2.</span> <span class="toc-text">2. HiCache &#x2F; HiSparse 修复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%85%B6%E4%BB%96-Bug-Fix"><span class="toc-number">4.3.</span> <span class="toc-text">3. 其他 Bug Fix</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%A8%A1%E5%9E%8B%E7%9B%B8%E5%85%B3%E4%BF%AE%E6%94%B9"><span class="toc-number">5.</span> <span class="toc-text">四、模型相关修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81server-args-py-%E5%8F%98%E6%9B%B4"><span class="toc-number">6.</span> <span class="toc-text">五、server_args.py 变更</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%8F%98%E6%9B%B4"><span class="toc-number">7.</span> <span class="toc-text">六、环境变量变更</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81CI-%E6%96%87%E6%A1%A3-%E5%85%B6%E4%BB%96"><span class="toc-number">8.</span> <span class="toc-text">七、CI &#x2F; 文档 &#x2F; 其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CI"><span class="toc-number">8.1.</span> <span class="toc-text">CI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%A1%A3"><span class="toc-number">8.2.</span> <span class="toc-text">文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD"><span class="toc-number">8.3.</span> <span class="toc-text">基础设施</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E9%87%8D%E7%82%B9%E5%8F%98%E6%9B%B4%E6%80%BB%E7%BB%93"><span class="toc-number">9.</span> <span class="toc-text">八、重点变更总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E6%A8%A1%E5%9E%8B"><span class="toc-number">9.1.</span> <span class="toc-text">新模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">9.2.</span> <span class="toc-text">性能优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bug-Fix"><span class="toc-number">9.3.</span> <span class="toc-text">Bug Fix</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#server-args-py"><span class="toc-number">9.4.</span> <span class="toc-text">server_args.py</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">9.5.</span> <span class="toc-text">环境变量</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/19/Sglang-%E6%AF%8F%E6%97%A5-Commit-%E6%80%BB%E7%BB%93-2026-04-18/" title="Sglang 每日 Commit 总结 (2026-04-18)">Sglang 每日 Commit 总结 (2026-04-18)</a><time datetime="2026-04-19T02:00:00.000Z" title="Created 2026-04-19 10:00:00">2026-04-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/18/SGLang-%E6%AF%8F%E6%97%A5-Commit-%E6%80%BB%E7%BB%93-2026-04-17-UTC-8/" title="SGLang 每日 Commit 总结 (2026-04-17 UTC+8)">SGLang 每日 Commit 总结 (2026-04-17 UTC+8)</a><time datetime="2026-04-18T03:05:15.000Z" title="Created 2026-04-18 11:05:15">2026-04-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/17/Sglang-Main-Branch-%E6%AF%8F%E6%97%A5%E5%8F%98%E6%9B%B4%E6%80%BB%E7%BB%93-2026-04-16/" title="Sglang Main Branch 每日变更总结 (2026-04-16)">Sglang Main Branch 每日变更总结 (2026-04-16)</a><time datetime="2026-04-17T02:00:00.000Z" title="Created 2026-04-17 10:00:00">2026-04-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/16/sglang-daily-2026-04-15/" title="Sglang 每日变更总结 - 2026-04-15">Sglang 每日变更总结 - 2026-04-15</a><time datetime="2026-04-15T16:00:00.000Z" title="Created 2026-04-16 00:00:00">2026-04-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/15/SGLang-Daily-Commit-Summary-2026-04-14/" title="SGLang Daily Commit Summary - 2026-04-14">SGLang Daily Commit Summary - 2026-04-14</a><time datetime="2026-04-15T03:03:16.000Z" title="Created 2026-04-15 11:03:16">2026-04-15</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By John Doe</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
