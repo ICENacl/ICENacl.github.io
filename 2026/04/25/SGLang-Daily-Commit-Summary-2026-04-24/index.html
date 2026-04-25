@@ -1,0 +1,513 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>SGLang Daily Commit Summary 2026-04-24 | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Summary of 39 commits merged into sgl-project&#x2F;sglang main branch on 2026-04-24 (UTC+8), covering new models, performance optimizations, bug fixes, and infrastructure updates.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SGLang Daily Commit Summary 2026-04-24">
+<meta property="og:url" content="http://example.com/2026/04/25/SGLang-Daily-Commit-Summary-2026-04-24/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Summary of 39 commits merged into sgl-project&#x2F;sglang main branch on 2026-04-24 (UTC+8), covering new models, performance optimizations, bug fixes, and infrastructure updates.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
+<meta property="article:published_time" content="2026-04-25T03:07:14.000Z">
+<meta property="article:modified_time" content="2026-04-25T03:08:53.944Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="SGLang">
+<meta property="article:tag" content="daily-summary">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "SGLang Daily Commit Summary 2026-04-24",
+  "url": "http://example.com/2026/04/25/SGLang-Daily-Commit-Summary-2026-04-24/",
+  "image": "http://example.com/img/butterfly-icon.png",
+  "datePublished": "2026-04-25T03:07:14.000Z",
+  "dateModified": "2026-04-25T03:08:53.944Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "John Doe",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2026/04/25/SGLang-Daily-Commit-Summary-2026-04-24/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'SGLang Daily Commit Summary 2026-04-24',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hexo</span></a><a class="nav-page-title" href="/"><span class="site-name">SGLang Daily Commit Summary 2026-04-24</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">SGLang Daily Commit Summary 2026-04-24</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-04-25T03:07:14.000Z" title="Created 2026-04-25 11:07:14">2026-04-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-04-25T03:08:53.944Z" title="Updated 2026-04-25 11:08:53">2026-04-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Tech/">Tech</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Tech/SGLang/">SGLang</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>This report summarizes <strong>39 commits</strong> merged into the <code>main</code> branch of<br><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang">sgl-project&#x2F;sglang</a> between<br><strong>2026-04-24 00:00:00</strong> and <strong>2026-04-24 23:59:59 (UTC+8)</strong>.</p>
+<hr>
+<h2 id="1-New-Model-Support"><a href="#1-New-Model-Support" class="headerlink" title="1. New Model Support"></a>1. New Model Support</h2><table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>Summary</th>
+<th>PR Link</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>model: support Moss-VL (#23454)</td>
+<td>Adds full support for the <strong>Moss-VL</strong> multimodal model, including model implementation, processor, conversation parser, and flashinfer prefill backend integration.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23454">PR #23454</a></td>
+</tr>
+<tr>
+<td>[diffusion] model: support LTX2.3 high quality pipeline (#23366)</td>
+<td>Introduces <strong>LTX2.3 HQ pipeline</strong> support in the diffusion runtime, adding <code>LTX2TwoStageHQPipeline</code>, updated DiT layers, and HQ sampling configs.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23366">PR #23366</a></td>
+</tr>
+<tr>
+<td>[MUSA] [16&#x2F;N] Add MUSA backend support for layers and DeepSeek models (V2&#x2F;V3&#x2F;R1) (#22774)</td>
+<td>Brings <strong>MUSA backend</strong> support to core layers (activation, layernorm, quantization, sampler) and full DeepSeek V2&#x2F;V3&#x2F;R1 model compatibility.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22774">PR #22774</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="2-Performance-Optimizations"><a href="#2-Performance-Optimizations" class="headerlink" title="2. Performance Optimizations"></a>2. Performance Optimizations</h2><table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>Summary</th>
+<th>PR Link</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[Experimental] Breakable Piecewise Cuda Graph (#22218)</td>
+<td>Introduces <strong>breakable piecewise CUDA Graph</strong> capture, enabling more flexible graph segmentation without relying solely on <code>torch.compile</code>-based splitting.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22218">PR #22218</a></td>
+</tr>
+<tr>
+<td>Skip unselected experts in flashinfer_trtllm (#23493)</td>
+<td>Optimizes MoE routing in the flashinfer_trtllm backend by <strong>skipping unselected experts</strong>, reducing unnecessary computation.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23493">PR #23493</a></td>
+</tr>
+<tr>
+<td>Move expert_mask_gpu from FusedMoE layer to StandardDispatcher (#23585)</td>
+<td>Refactors MoE internals by moving <code>expert_mask_gpu</code> logic into <code>StandardDispatcher</code>, improving modularity and potentially reducing memory overhead.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23585">PR #23585</a></td>
+</tr>
+<tr>
+<td>Pre-set SWA cache location in CudaGraphRunner (#23552)</td>
+<td>Pre-sets <strong>sliding-window attention (SWA) cache locations</strong> before CUDA graph capture, avoiding runtime cache reallocation overhead.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23552">PR #23552</a></td>
+</tr>
+<tr>
+<td>[Apple Silicon] [MLX] Cache seq_lens-derived tensors in BatchedDecodeContext (#23470)</td>
+<td>Caches sequence-length derived tensors in MLX <code>BatchedDecodeContext</code>, reducing redundant compute on Apple Silicon.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23470">PR #23470</a></td>
+</tr>
+<tr>
+<td>[Intel GPU] Enable pipeline parallelism on XPU (#23472)</td>
+<td>Enables <strong>pipeline parallelism</strong> for Intel GPU (XPU) deployments. (Note: this was briefly reverted in #23641 and re-landed in #23645.)</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23472">PR #23472</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="3-Bug-Fixes"><a href="#3-Bug-Fixes" class="headerlink" title="3. Bug Fixes"></a>3. Bug Fixes</h2><table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>Summary</th>
+<th>PR Link</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[AMD] Fix memory access fault when <code>--page-size &gt; 1</code> with speculative decoding on AMD GPUs (#23596)</td>
+<td>Resolves a <strong>memory access fault</strong> on AMD GPUs when speculative decoding is combined with page sizes greater than 1.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23596">PR #23596</a></td>
+</tr>
+<tr>
+<td>Fix MoE no_combine: skip router weight in down projection (#23545)</td>
+<td>Fixes the <strong>MoE <code>no_combine</code> path</strong> by correctly skipping router weights during the down projection stage.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23545">PR #23545</a></td>
+</tr>
+<tr>
+<td>[bug fix] has_fp8_weights_in_checkpoint: handle HF repo IDs, not just local paths (#23542)</td>
+<td>Fixes <code>has_fp8_weights_in_checkpoint</code> to properly accept <strong>HuggingFace Hub repo IDs</strong> in addition to local filesystem paths.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23542">PR #23542</a></td>
+</tr>
+<tr>
+<td>[BUGFIX] Fix Ascend backend pre-allocated range in NPU Graph Mode. (#22778)</td>
+<td>Corrects the <strong>pre-allocated memory range</strong> calculation for Ascend NPU Graph Mode, preventing out-of-bounds access.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22778">PR #22778</a></td>
+</tr>
+<tr>
+<td>[Diffusion] [NPU] [Bugfix] Ascend_fa crashes when sequence parallelism is used. (#23572)</td>
+<td>Fixes a <strong>crash in Ascend flash attention</strong> (<code>ascend_fa</code>) triggered when sequence parallelism is enabled in diffusion workloads.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23572">PR #23572</a></td>
+</tr>
+<tr>
+<td>Fix: fallback to torch API when NVML memory query is not supported (#23426)</td>
+<td>Adds a <strong>graceful fallback</strong> to PyTorch memory APIs when NVML memory queries are unavailable.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23426">PR #23426</a></td>
+</tr>
+<tr>
+<td>[diffusion] fix: unify LTX-2.3 HQ codepath gates for all LTX-2.3 variants (#23624)</td>
+<td>Unifies <strong>LTX-2.3 HQ pipeline gating logic</strong> across all LTX-2.3 model variants to prevent branch divergence errors.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23624">PR #23624</a></td>
+</tr>
+<tr>
+<td>[AMD] Fix nightly version tag selection (#23644)</td>
+<td>Fixes the <strong>nightly Docker image version tag</strong> selection logic in AMD release workflows.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23644">PR #23644</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="4-Platform-and-Hardware-Support"><a href="#4-Platform-and-Hardware-Support" class="headerlink" title="4. Platform and Hardware Support"></a>4. Platform and Hardware Support</h2><table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>Summary</th>
+<th>PR Link</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[MUSA] [8&#x2F;N] Port CUDA kernels that are compatible with MUSA (#17946)</td>
+<td>Ports a wide set of <strong>CUDA kernels</strong> (allreduce, elementwise, gemm, MoE, quantization, speculative decoding) to the MUSA architecture.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/17946">PR #17946</a></td>
+</tr>
+<tr>
+<td>[BUGFIX] Fix Ascend backend pre-allocated range in NPU Graph Mode. (#22778)</td>
+<td>(Also listed in Bug Fixes) Addresses Ascend NPU-specific memory pre-allocation issues.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22778">PR #22778</a></td>
+</tr>
+<tr>
+<td>[Diffusion] [NPU] [Bugfix] Ascend_fa crashes when sequence parallelism is used. (#23572)</td>
+<td>(Also listed in Bug Fixes) Resolves Ascend NPU flash-attention compatibility with sequence parallelism.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23572">PR #23572</a></td>
+</tr>
+<tr>
+<td>[CPU] remove RECORD_FUNCTION (#23528)</td>
+<td>Removes <code>RECORD_FUNCTION</code> macros from CPU kernels to reduce profiling overhead and build complexity on CPU-only builds.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23528">PR #23528</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="5-Observability-and-Tracing"><a href="#5-Observability-and-Tracing" class="headerlink" title="5. Observability and Tracing"></a>5. Observability and Tracing</h2><table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>Summary</th>
+<th>PR Link</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>feat: add OpenTelemetry tracing to DiffGenerator (#21254)</td>
+<td>Integrates <strong>OpenTelemetry tracing</strong> into the diffusion generator runtime, covering scheduling, disaggregation, GPU workers, and API endpoints.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/21254">PR #21254</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="6-Infrastructure-and-CI"><a href="#6-Infrastructure-and-CI" class="headerlink" title="6. Infrastructure and CI"></a>6. Infrastructure and CI</h2><table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>Summary</th>
+<th>PR Link</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[CI] Consolidate Docker release workflows into reusable workflow (#22541)</td>
+<td>Refactors Docker release pipelines into a <strong>reusable GitHub Actions workflow</strong>, reducing duplication across dev, runtime, and standard releases.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22541">PR #22541</a></td>
+</tr>
+<tr>
+<td>[CI] Export GB200 nightly logs to S3 (#23502)</td>
+<td>Adds <strong>S3 log export</strong> for GB200 nightly test runs to improve post-failure diagnostics.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23502">PR #23502</a></td>
+</tr>
+<tr>
+<td>[CI] Fix mxfp8 TrtllmGenMoe test (#23125)</td>
+<td>Fixes a failing <strong>mxfp8 TrtllmGenMoe unit test</strong> in CI.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23125">PR #23125</a></td>
+</tr>
+<tr>
+<td>ci: fix cu129 wheel tagging + pipefail-abort in install script (follow-up to #23497) (#23587)</td>
+<td>Fixes <strong>CUDA 12.9 wheel tagging</strong> and shell <code>pipefail</code> behavior in dependency install scripts.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23587">PR #23587</a></td>
+</tr>
+<tr>
+<td>[AMD] upd local registry address (#23607)</td>
+<td>Updates AMD CI <strong>local container registry</strong> addresses.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23607">PR #23607</a></td>
+</tr>
+<tr>
+<td>[diffusion] CI: minor refactor CI (#23576)</td>
+<td>Refactors diffusion test suite definitions and GPU case configurations in CI.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23576">PR #23576</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="7-Documentation-and-Cookbooks"><a href="#7-Documentation-and-Cookbooks" class="headerlink" title="7. Documentation and Cookbooks"></a>7. Documentation and Cookbooks</h2><table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>Summary</th>
+<th>PR Link</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Add DeepSeek V4 cookbook (#23605)</td>
+<td>Introduces a new <strong>DeepSeek V4 deployment cookbook</strong> with JSX snippets and comprehensive setup guide.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23605">PR #23605</a></td>
+</tr>
+<tr>
+<td>Again update DeepSeek V4 cookbook (#23622)</td>
+<td>Follow-up updates to DeepSeek V4 cookbook content and snippets.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23622">PR #23622</a></td>
+</tr>
+<tr>
+<td>Update pro fp8 checkpoint in DeepSeek V4 cookbook (#23634)</td>
+<td>Updates the recommended <strong>FP8 checkpoint reference</strong> in the DeepSeek V4 cookbook.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23634">PR #23634</a></td>
+</tr>
+<tr>
+<td>[codex] docs: note H200 DeepSeek-V4 checkpoint (#23628)</td>
+<td>Adds H200-specific checkpoint notes to the DeepSeek V4 documentation.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23628">PR #23628</a></td>
+</tr>
+<tr>
+<td>Further update Deepseek V4 docs (#23617)</td>
+<td>Additional refinements to DeepSeek V4 deployment documentation.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23617">PR #23617</a></td>
+</tr>
+<tr>
+<td>docs: split MI300X and MI325X options in GLM-5.1 generator (#23540)</td>
+<td>Separates <strong>MI300X and MI325X</strong> configuration options in the GLM-5.1 deployment generator.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23540">PR #23540</a></td>
+</tr>
+<tr>
+<td>[Intel CPU&#x2F;XPU] SGL doc updates (#23547)</td>
+<td>Updates documentation for Intel CPU and XPU platform support.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23547">PR #23547</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="8-Scheduling-and-Engine-Improvements"><a href="#8-Scheduling-and-Engine-Improvements" class="headerlink" title="8. Scheduling and Engine Improvements"></a>8. Scheduling and Engine Improvements</h2><table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>Summary</th>
+<th>PR Link</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[PD+DP] Allow PrefillDelayer in disaggregated-prefill mode (#23588)</td>
+<td>Enables the <strong>PrefillDelayer</strong> optimization in disaggregated-prefill (PD) + data-parallel (DP) configurations.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23588">PR #23588</a></td>
+</tr>
+<tr>
+<td>Expose child process PIDs from Engine for health check support (#23320)</td>
+<td>Exposes <strong>child process PIDs</strong> from the <code>Engine</code> class to facilitate external health-check and orchestration tooling.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23320">PR #23320</a></td>
+</tr>
+<tr>
+<td>chore: bump flashinfer version to 0.6.8.post1 (#23281)</td>
+<td>Upgrades the <strong>flashinfer</strong> dependency to <code>0.6.8.post1</code>.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23281">PR #23281</a></td>
+</tr>
+<tr>
+<td>Revert “[Intel GPU] Enable pipeline parallelism on XPU” (#23641)</td>
+<td>Temporarily reverts the XPU pipeline parallelism change; subsequently re-landed in #23645.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23641">PR #23641</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="Key-Highlights"><a href="#Key-Highlights" class="headerlink" title="Key Highlights"></a>Key Highlights</h2><h3 id="New-Models"><a href="#New-Models" class="headerlink" title="New Models"></a>New Models</h3><ul>
+<li><strong>Moss-VL</strong>: A new multimodal vision-language model is now supported with<br>flashinfer cross-attention custom masks.</li>
+<li><strong>LTX2.3 HQ Pipeline</strong>: High-quality diffusion pipeline support added for LTX<br>video generation models.</li>
+<li><strong>MUSA Backend</strong>: Extends SGLang compatibility to Moore Threads MUSA GPUs for<br>DeepSeek V2&#x2F;V3&#x2F;R1 inference.</li>
+</ul>
+<h3 id="Performance-Optimizations"><a href="#Performance-Optimizations" class="headerlink" title="Performance Optimizations"></a>Performance Optimizations</h3><ul>
+<li><strong>Breakable Piecewise CUDA Graph</strong>: A major experimental feature that allows<br>more granular CUDA graph capture, reducing CPU overhead in dynamic-shape<br>scenarios.</li>
+<li><strong>MoE Expert Skipping &amp; Dispatch Refactoring</strong>: Reduces wasted computation in<br>MoE layers by skipping unselected experts and reorganizing mask handling.</li>
+<li><strong>XPU Pipeline Parallelism</strong>: Intel GPU users can now leverage pipeline<br>parallelism for larger model deployments.</li>
+</ul>
+<h3 id="Bug-Fixes"><a href="#Bug-Fixes" class="headerlink" title="Bug Fixes"></a>Bug Fixes</h3><ul>
+<li>AMD speculative decoding stability improved when using non-default page sizes.</li>
+<li>MoE <code>no_combine</code> correctness fixed.</li>
+<li>FP8 checkpoint detection now works with remote HuggingFace Hub IDs.</li>
+<li>Ascend NPU memory pre-allocation and flash-attention sequence-parallelism<br>crashes resolved.</li>
+</ul>
+<h3 id="Server-Arguments-Added-server-args-py"><a href="#Server-Arguments-Added-server-args-py" class="headerlink" title="Server Arguments Added (server_args.py)"></a>Server Arguments Added (<code>server_args.py</code>)</h3><table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>File</th>
+<th>Description</th>
+<th>PR</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--enable-breakable-cuda-graph</code></td>
+<td><code>python/sglang/srt/server_args.py</code></td>
+<td>Use breakable CUDA graph for piecewise capture.</td>
+<td>#22218</td>
+</tr>
+<tr>
+<td><code>--device</code> (updated help)</td>
+<td><code>python/sglang/srt/server_args.py</code></td>
+<td>Added <code>&quot;musa&quot;</code> to valid devices in help text.</td>
+<td>#22774</td>
+</tr>
+<tr>
+<td><code>--enable-trace</code></td>
+<td><code>python/sglang/multimodal_gen/runtime/server_args.py</code></td>
+<td>Enable OpenTelemetry tracing for diffusion runtime.</td>
+<td>#21254</td>
+</tr>
+<tr>
+<td><code>--otlp-traces-endpoint</code></td>
+<td><code>python/sglang/multimodal_gen/runtime/server_args.py</code></td>
+<td>OTLP collector endpoint when <code>--enable-trace</code> is set.</td>
+<td>#21254</td>
+</tr>
+<tr>
+<td><code>LTX2TwoStageHQPipeline</code></td>
+<td><code>python/sglang/multimodal_gen/runtime/server_args.py</code></td>
+<td>Added to recognized two-stage pipeline names for LTX2.</td>
+<td>#23366</td>
+</tr>
+</tbody></table>
+<h3 id="New-Environment-Variables"><a href="#New-Environment-Variables" class="headerlink" title="New Environment Variables"></a>New Environment Variables</h3><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>File</th>
+<th>Description</th>
+<th>PR</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>SGLANG_DEEPGEMM_SANITY_CHECK</code></td>
+<td><code>python/sglang/srt/environ.py</code></td>
+<td>Boolean flag to enable DeepGEMM sanity-check mode.</td>
+<td>#22774</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2026/04/25/SGLang-Daily-Commit-Summary-2026-04-24/">http://example.com/2026/04/25/SGLang-Daily-Commit-Summary-2026-04-24/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SGLang/">SGLang</a><a class="post-meta__tags" href="/tags/LLM/">LLM</a><a class="post-meta__tags" href="/tags/daily-summary/">daily-summary</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/04/24/SGLang-Daily-Commit-Summary-2026-04-23/" title="SGLang 每日 Commit 总结 (2026-04-23)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">SGLang 每日 Commit 总结 (2026-04-23)</div></div><div class="info-2"><div class="info-item-1">SGLang 每日 Commit 总结 — 2026-04-23 (UTC+8) 时间范围：2026-04-23 00:00 ~ 23:59 (UTC+8)统计：共 37 个 commit   总体概览昨日 SGLang main 分支的修改主要集中在以下几个方向：  性能优化：AMD FP8 blockscale GEMM 替换、Dual MoE CUDA graph 捕获、JIT rmsnorm_hf 内核修复 MMLU 精度回归 Bug 修复：多个模块的非法内存访问修复、timeout 传播修复、dynamic chunking profiling crash 修复 新功能&#x2F;特性：CPU GPTQ&#x2F;AWQ 4bit 量化支持、Chat Completions API defer_loading 支持、gRPC 模式 HTTP sidecar 端点 新模型&#x2F;文档：Qwen3.6-27B dense variant、Hunyuan 3 Preview cookbook、SGLang Omni 文档重定向 CI&#x2F;基础设施改进：GB200 n...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/04/08/SGLang-%E6%AF%8F%E6%97%A5-Commit-%E6%80%BB%E7%BB%93-2026-04-07/" title="SGLang 每日 Commit 总结 (2026-04-07)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-08</div><div class="info-item-2">SGLang 每日 Commit 总结 (2026-04-07)</div></div><div class="info-2"><div class="info-item-1">SGLang Main Branch 每日 Commit 总结 (2026-04-07) 统计时间范围：UTC+8 2026-04-07 00:00 ~ 24:00共统计 30 个 commit，涉及 81 个文件变更   一、新模型支持昨日新增了以下模型的支持：    Commit Message 总结 PR 链接    [New Model] Gemma 4 (#21952) 新增 Google Gemma 4 模型支持，包括模型定义、MoE 配置、函数调用检测器等 PR #21952   model: support qwen3-asr (#22073) 新增 Qwen3-ASR 语音识别模型支持，包含模型配置、处理器和转录服务 PR #22073    二、性能优化   Commit Message 总结 PR 链接    [Perf] Restore torch.compile fusion for topk postprocessing (#21771) 恢复 topk 后处理的 torch.compile 融合优化，提升 MoE 路由性能 PR #21771   [...</div></div></div></a><a class="pagination-related" href="/2026/04/11/sglang-daily-commit-summary-2026-04-10/" title="SGLang 每日 Commit 总结 - 2026-04-10"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-11</div><div class="info-item-2">SGLang 每日 Commit 总结 - 2026-04-10</div></div><div class="info-2"><div class="info-item-1">SGLang 每日 Commit 总结 (UTC+8 2026-04-10)昨日 main 分支共产生 40 个 commit，涵盖模型支持、性能优化、Bug 修复、CI&#x2F;CD、Docker 优化等多个方面。  一、新模型 &#x2F; 新特性   Commit Message 总结 PR 链接    [EPD][VLM] Support Kimi K25 EPD (#22269) 支持 Kimi K25 的 EPD（Encode Prefill Disaggregation），扩展 VLM  disaggregation 到 Kimi 系列模型 PR #22269   [feature] asr: add chunk-based streaming ASR for Qwen3-ASR (#22089) 为 Qwen3-ASR 添加基于 chunk 的流式语音识别（ASR）支持 PR #22089   Enable DFLASH support for additional model backends (#22358) 为 DeepSeekV2、GPT-OSS、Kim...</div></div></div></a><a class="pagination-related" href="/2026/04/21/SGLang-%E6%AF%8F%E6%97%A5-Commit-%E6%80%BB%E7%BB%93-2026-04-20/" title="SGLang 每日 Commit 总结 (2026-04-20)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-21</div><div class="info-item-2">SGLang 每日 Commit 总结 (2026-04-20)</div></div><div class="info-2"><div class="info-item-1">SGLang 每日 Commit 总结日期： UTC+8 2026-04-20 00:00 ~ 24:00分支： mainCommit 总数： 20 个  一、总体概述昨日的修改主要集中在以下几个方向：  Multi platform Plugin 系统：引入了平台插件机制，支持 OOT（Out-of-Tree）平台通过插件方式接入，包括平台接口定义、插件钩子注册、server_args 默认值注入等核心基础设施。 Native gRPC 支持：添加了原生 gRPC 服务器的 proto 定义、Rust crate 脚手架以及 server_args 集成，支持环境变量控制。 StreamingSession 核心重构：将 StreamingSession 深度集成到 UnifiedRadixCache 中，包括 session 模块目录迁移和 always-on 模式。 Diffusion 模型优化：针对 diffusion 模型的图像&#x2F;视频输入加载方式进行了性能优化，并对 LTX2.3 进行了代码清理。 Bugfix 和 CI 改进：修复了 DeepEP 编译超时、...</div></div></div></a><a class="pagination-related" href="/2026/04/18/SGLang-%E6%AF%8F%E6%97%A5-Commit-%E6%80%BB%E7%BB%93-2026-04-17-UTC-8/" title="SGLang 每日 Commit 总结 (2026-04-17 UTC+8)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-18</div><div class="info-item-2">SGLang 每日 Commit 总结 (2026-04-17 UTC+8)</div></div><div class="info-2"><div class="info-item-1"> 统计时间范围：2026-04-17 00:00 ~ 24:00 (UTC+8)分支：mainCommit 总数：47   一、重点修改概览新模型支持   Commit Message 总结 PR 链接    [CPU] Add gemma4_rmsnorm_cpu kernel (#22842) 为 CPU 后端添加 Gemma-4 模型的 RMSNorm 内核支持 PR #22842   [CI] Adding Gemma 4 to Nightly CI (#22408) 将 Gemma-4 模型加入夜间 CI 测试 PR #22408   feat: Support MXFP4 quantized dense models on AMD CDNA2/CDNA3 GPUs (#19143) 支持 AMD CDNA2&#x2F;CDNA3 GPU 上的 MXFP4 量化稠密模型（新增 petit_mxfp4 量化选项，后被 revert） PR #19143   Revert &quot;feat: Support MXFP4 quantized dense models on...</div></div></div></a><a class="pagination-related" href="/2026/04/15/SGLang-Daily-Commit-Summary-2026-04-14/" title="SGLang Daily Commit Summary - 2026-04-14"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-15</div><div class="info-item-2">SGLang Daily Commit Summary - 2026-04-14</div></div><div class="info-2"><div class="info-item-1">SGLang Main Branch Commit Summary (UTC+8 2026-04-14)统计时间范围：UTC+8 2026-04-14 00:00 至 2026-04-14 23:59（UTC 2026-04-13 16:00 至 2026-04-14 15:59） 共统计 46 个 commit。  一、新模型&#x2F;新功能支持本时段新增了对多个模型和功能的支持，包括扩散模型、量化格式、存储后端等。    Commit Message 总结 PR 链接    [diffusion] model: support Ltx 2.3 two stage ti2v (#22667) 为扩散模型添加 LTX 2.3 两阶段 text-to-video 生成支持 PR #22667   [diffusion] quant: add FLUX.1-dev modelopt nvfp4 support (#22672) 为 FLUX.1-dev 模型添加 ModelOpt NVFP4 量化支持 PR #22672   [HiCache &amp; HybridModel] ...</div></div></div></a><a class="pagination-related" href="/2026/04/22/SGLang-main%E5%88%86%E6%94%AF%E6%AF%8F%E6%97%A5Commit%E6%80%BB%E7%BB%93-2026-04-21/" title="SGLang main分支每日Commit总结 - 2026-04-21"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-22</div><div class="info-item-2">SGLang main分支每日Commit总结 - 2026-04-21</div></div><div class="info-2"><div class="info-item-1">SGLang main分支 Commit 总结 (2026-04-21 UTC+8)本文总结了2026年4月21日（UTC+8 0:00-24:00）期间 SGLang main分支的所有commit，共计 51个commit。  一、新模型支持昨日新增了对以下模型或模型特性的支持：    Commit Message 总结 PR链接    [AMD] Fused qk rmsnorm bf16 for amd/Kimi-K2.5-MXFP4 (#23186) 为AMD GPU上的Kimi-K2.5-MXFP4模型实现fused qk rmsnorm bf16优化 #23186   [AMD] Enable MTP for GLM-5-mxfp4 model (#23219) 为GLM-5-mxfp4模型启用MTP（Multi-Token Prediction）支持 #23219   [Diffusion][CPU] Init CPU platform support for SGLang Diffusion (#20816) 为SGLang Diffusion初始化CPU平台支...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">John Doe</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-New-Model-Support"><span class="toc-number">1.</span> <span class="toc-text">1. New Model Support</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Performance-Optimizations"><span class="toc-number">2.</span> <span class="toc-text">2. Performance Optimizations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Bug-Fixes"><span class="toc-number">3.</span> <span class="toc-text">3. Bug Fixes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Platform-and-Hardware-Support"><span class="toc-number">4.</span> <span class="toc-text">4. Platform and Hardware Support</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Observability-and-Tracing"><span class="toc-number">5.</span> <span class="toc-text">5. Observability and Tracing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Infrastructure-and-CI"><span class="toc-number">6.</span> <span class="toc-text">6. Infrastructure and CI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Documentation-and-Cookbooks"><span class="toc-number">7.</span> <span class="toc-text">7. Documentation and Cookbooks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-Scheduling-and-Engine-Improvements"><span class="toc-number">8.</span> <span class="toc-text">8. Scheduling and Engine Improvements</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Key-Highlights"><span class="toc-number">9.</span> <span class="toc-text">Key Highlights</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#New-Models"><span class="toc-number">9.1.</span> <span class="toc-text">New Models</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Performance-Optimizations"><span class="toc-number">9.2.</span> <span class="toc-text">Performance Optimizations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bug-Fixes"><span class="toc-number">9.3.</span> <span class="toc-text">Bug Fixes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Server-Arguments-Added-server-args-py"><span class="toc-number">9.4.</span> <span class="toc-text">Server Arguments Added (server_args.py)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#New-Environment-Variables"><span class="toc-number">9.5.</span> <span class="toc-text">New Environment Variables</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/25/SGLang-Daily-Commit-Summary-2026-04-24/" title="SGLang Daily Commit Summary 2026-04-24">SGLang Daily Commit Summary 2026-04-24</a><time datetime="2026-04-25T03:07:14.000Z" title="Created 2026-04-25 11:07:14">2026-04-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/24/SGLang-Daily-Commit-Summary-2026-04-23/" title="SGLang 每日 Commit 总结 (2026-04-23)">SGLang 每日 Commit 总结 (2026-04-23)</a><time datetime="2026-04-24T01:00:00.000Z" title="Created 2026-04-24 09:00:00">2026-04-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/23/SGLang-Daily-Commit-Summary-2026-04-22/" title="SGLang Daily Commit Summary - 2026-04-22">SGLang Daily Commit Summary - 2026-04-22</a><time datetime="2026-04-23T03:04:32.000Z" title="Created 2026-04-23 11:04:32">2026-04-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/22/SGLang-main%E5%88%86%E6%94%AF%E6%AF%8F%E6%97%A5Commit%E6%80%BB%E7%BB%93-2026-04-21/" title="SGLang main分支每日Commit总结 - 2026-04-21">SGLang main分支每日Commit总结 - 2026-04-21</a><time datetime="2026-04-21T16:00:00.000Z" title="Created 2026-04-22 00:00:00">2026-04-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/21/SGLang-%E6%AF%8F%E6%97%A5-Commit-%E6%80%BB%E7%BB%93-2026-04-20/" title="SGLang 每日 Commit 总结 (2026-04-20)">SGLang 每日 Commit 总结 (2026-04-20)</a><time datetime="2026-04-20T16:00:00.000Z" title="Created 2026-04-21 00:00:00">2026-04-21</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By John Doe</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
