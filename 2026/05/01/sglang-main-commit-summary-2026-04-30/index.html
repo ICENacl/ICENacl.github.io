@@ -1,0 +1,470 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>SGLang Main Branch Commit Summary (2026-04-30 UTC+8) | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="SGLang Main Branch Commit Summary (2026-04-30 UTC+8)OverviewThis report summarizes 38 commits merged into the SGLang main branch during UTC+8 2026-04-30 00:00–24:00. The commits span bug fixes, model">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SGLang Main Branch Commit Summary (2026-04-30 UTC+8)">
+<meta property="og:url" content="http://example.com/2026/05/01/sglang-main-commit-summary-2026-04-30/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="SGLang Main Branch Commit Summary (2026-04-30 UTC+8)OverviewThis report summarizes 38 commits merged into the SGLang main branch during UTC+8 2026-04-30 00:00–24:00. The commits span bug fixes, model">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
+<meta property="article:published_time" content="2026-05-01T03:07:02.000Z">
+<meta property="article:modified_time" content="2026-05-01T03:08:39.957Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="daily-summary">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="sglang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "SGLang Main Branch Commit Summary (2026-04-30 UTC+8)",
+  "url": "http://example.com/2026/05/01/sglang-main-commit-summary-2026-04-30/",
+  "image": "http://example.com/img/butterfly-icon.png",
+  "datePublished": "2026-05-01T03:07:02.000Z",
+  "dateModified": "2026-05-01T03:08:39.957Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "John Doe",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2026/05/01/sglang-main-commit-summary-2026-04-30/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'SGLang Main Branch Commit Summary (2026-04-30 UTC+8)',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hexo</span></a><a class="nav-page-title" href="/"><span class="site-name">SGLang Main Branch Commit Summary (2026-04-30 UTC+8)</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">SGLang Main Branch Commit Summary (2026-04-30 UTC+8)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-05-01T03:07:02.000Z" title="Created 2026-05-01 11:07:02">2026-05-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-05-01T03:08:39.957Z" title="Updated 2026-05-01 11:08:39">2026-05-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Tech/">Tech</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Tech/LLM/">LLM</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="SGLang-Main-Branch-Commit-Summary-2026-04-30-UTC-8"><a href="#SGLang-Main-Branch-Commit-Summary-2026-04-30-UTC-8" class="headerlink" title="SGLang Main Branch Commit Summary (2026-04-30 UTC+8)"></a>SGLang Main Branch Commit Summary (2026-04-30 UTC+8)</h1><h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>This report summarizes 38 commits merged into the SGLang <code>main</code> branch during UTC+8 2026-04-30 00:00–24:00. The commits span bug fixes, model support expansion, performance optimizations, CI improvements, and infrastructure refactoring across GPU (NVIDIA), AMD, NPU, XPU, and Apple Silicon backends.</p>
+<hr>
+<h2 id="Highlighted-Changes"><a href="#Highlighted-Changes" class="headerlink" title="Highlighted Changes"></a>Highlighted Changes</h2><h3 id="New-Model-Support"><a href="#New-Model-Support" class="headerlink" title="New Model Support"></a>New Model Support</h3><ul>
+<li><strong>Qwen3ForPooledOutput</strong> now forwards <code>get_input_embeddings</code> to its inner model.</li>
+<li><strong>LoRA support</strong> added for <strong>Qwen3.5</strong> and <strong>Nemotron3</strong>, including new model files and comprehensive logprob-diff tests.</li>
+<li><strong>MiniMax-M2</strong> (NPU) received optimized fused ops (<code>split_qkv_tp_rmsnorm_rope</code>).</li>
+<li><strong>MOSS-VL</strong> fixed to use <code>Conv3dLayer</code> and removed a no-op <code>flat_encoder_result</code> path.</li>
+</ul>
+<h3 id="Performance-Optimizations"><a href="#Performance-Optimizations" class="headerlink" title="Performance Optimizations"></a>Performance Optimizations</h3><ul>
+<li><strong>Apple Silicon &#x2F; MLX</strong>: Introduced async-eval-based decode partial-overlap scheduling, significantly improving generation throughput on MLX backends.</li>
+<li><strong>ModelExpress</strong>: Added peer-to-peer RDMA transfer support with configurable transport backends (<code>transfer_engine</code> or <code>nixl</code>).</li>
+<li><strong>AWQ Quantization</strong>: Major refactor splitting kernel calls, weight initialization, and schemes (linear, Marlin, MoE) into modular files.</li>
+<li><strong>AMD MoriEP</strong>: Enabled SDMA path for MoE token dispatch.</li>
+<li><strong>XPU</strong>: Added deterministic-operation mode for reproducible results.</li>
+</ul>
+<h3 id="Bug-Fixes"><a href="#Bug-Fixes" class="headerlink" title="Bug Fixes"></a>Bug Fixes</h3><ul>
+<li><strong>Speculative Decoding</strong>: <code>SGLANG_ENABLE_SPEC_V2</code> is now <strong>enabled by default</strong>; fallback-to-v1 logic cleaned up and overlap-scheduler compatibility improved.</li>
+<li><strong>MoE &amp; CUDA Graphs</strong>: Fixed compatibility between <code>--moe-dense-tp-size 1</code> and piecewise CUDA graph capture.</li>
+<li><strong>LoRA &amp; CUDA Graphs</strong>: Eliminated a CUDA-graph-breaking scalar assignment in <code>seg_indptr</code>.</li>
+<li><strong>Disaggregation &#x2F; PD</strong>: Fixed mamba cache capping in decode mode and added missing index&#x2F;KV transfer for MTP layers in NSA disaggregation.</li>
+<li><strong>Memory Cache</strong>: Corrected host-leaf status check from “evicted” to “backuped” in the hierarchical radix cache.</li>
+<li><strong>FP8 &#x2F; Qwen3.5</strong>: Fixed per-tensor scale broadcasting in <code>_make_packed_weight_loader</code>.</li>
+<li><strong>Context-Length Handling</strong>: Requests whose total token count exactly equals <code>context_len</code> are now accepted.</li>
+</ul>
+<h3 id="Server-Arguments-server-args-py"><a href="#Server-Arguments-server-args-py" class="headerlink" title="Server Arguments (server_args.py)"></a>Server Arguments (<code>server_args.py</code>)</h3><table>
+<thead>
+<tr>
+<th>Parameter &#x2F; Behavior</th>
+<th>Change</th>
+<th>Commit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>modelexpress_transport</code></td>
+<td><strong>New property</strong>. Returns the ModelExpress transport backend: <code>&quot;transfer_engine&quot;</code> (default) or <code>&quot;nixl&quot;</code>. TransferEngine init is now skipped when <code>nixl</code> is selected.</td>
+<td>#23105</td>
+</tr>
+<tr>
+<td><code>disable_overlap_schedule</code> (MLX)</td>
+<td>Apple Silicon &#x2F; MLX runners no longer unconditionally disable the overlap scheduler.</td>
+<td>#22416</td>
+</tr>
+<tr>
+<td><code>SGLANG_ENABLE_SPEC_V2</code> logic</td>
+<td>Default spec algorithm switched to v2 for EAGLE&#x2F;EAGLE3&#x2F;STANDALONE; v1 is used only when <code>topk &gt; 1</code> or the env var is explicitly <code>False</code>.</td>
+<td>#21062</td>
+</tr>
+<tr>
+<td><code>mamba_scheduler_strategy</code></td>
+<td>Decode disaggregation now forces chunk cache; if <code>enable_mamba_extra_buffer()</code> was set, it is auto-downgraded to <code>&quot;no_buffer&quot;</code> with a warning.</td>
+<td>#22462</td>
+</tr>
+</tbody></table>
+<h3 id="Environment-Variables"><a href="#Environment-Variables" class="headerlink" title="Environment Variables"></a>Environment Variables</h3><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Change</th>
+<th>Commit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>SGLANG_ENABLE_SPEC_V2</code></td>
+<td>Default value changed from <code>False</code> to <code>True</code>.</td>
+<td>#21062</td>
+</tr>
+<tr>
+<td><code>MORI_ENABLE_SDMA</code></td>
+<td>Added (AMD MoriEP path). When set to <code>&quot;true&quot;</code>, enables SDMA for MoE token dispatch.</td>
+<td>#23929</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="Commit-Details-by-Category"><a href="#Commit-Details-by-Category" class="headerlink" title="Commit Details by Category"></a>Commit Details by Category</h2><h3 id="1-New-Model-Support"><a href="#1-New-Model-Support" class="headerlink" title="1. New Model Support"></a>1. New Model Support</h3><table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>Summary</th>
+<th>PR Link</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[Model] Qwen3ForPooledOutput: forward get_input_embeddings to inner model (#23434)</td>
+<td>Enables proper embedding retrieval for pooled-output variants by delegating to the inner model.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23434">#23434</a></td>
+</tr>
+<tr>
+<td>LoRA support for qwen3.5 and nemotron3 (#23594)</td>
+<td>Adds full LoRA adapter support for Qwen3.5 and Nemotron3, including backend kernels and regression tests.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23594">#23594</a></td>
+</tr>
+<tr>
+<td>[NPU] add split_qkv_tp_rmsnorm_rope ops for minimax2 &amp; fix eagle3 hidden states capture in dp attn mode (#23190)</td>
+<td>Fuses critical MiniMax-M2 operators for NPU and repairs EAGLE3 hidden-state capture under data-parallel attention.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23190">#23190</a></td>
+</tr>
+<tr>
+<td>[fix] moss-vl: use Conv3dLayer and remove no-op flat_encoder_result (#23932)</td>
+<td>Replaces legacy encoder path with Conv3dLayer and deletes dead code in MOSS-VL.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23932">#23932</a></td>
+</tr>
+</tbody></table>
+<h3 id="2-Performance-Optimizations"><a href="#2-Performance-Optimizations" class="headerlink" title="2. Performance Optimizations"></a>2. Performance Optimizations</h3><table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>Summary</th>
+<th>PR Link</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[Apple Silicon] [MLX] MLX decode partial overlap scheduling for generation (async eval) (#22416)</td>
+<td>Implements async-eval overlap scheduling on MLX, unlocking higher decode throughput on Apple Silicon.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22416">#22416</a></td>
+</tr>
+<tr>
+<td>feat: Support modelexpress p2p RDMA transfer (#23105)</td>
+<td>Enables peer-to-peer RDMA for ModelExpress model loading with pluggable transport backends.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23105">#23105</a></td>
+</tr>
+<tr>
+<td>[4&#x2F;N] Quantization Refactor: AWQ schemes and Kernel call and weight init split (#21126)</td>
+<td>Refactors AWQ into separate scheme classes (linear, Marlin, MoE) and decouples kernel invocation from weight init.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/21126">#21126</a></td>
+</tr>
+<tr>
+<td>[AMD] Support sdma path for moriep (#23929)</td>
+<td>Adds SDMA support to the AMD MoriEP MoE token-dispatcher for reduced H2D&#x2F;D2H overhead.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23929">#23929</a></td>
+</tr>
+<tr>
+<td>Add deterministic mode for XPU operations (#16793)</td>
+<td>Introduces deterministic op mode on XPU to guarantee bitwise-reproducible results.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/16793">#16793</a></td>
+</tr>
+<tr>
+<td>[Score API] Hoist query placeholder scan and specialize PositionalEmbeds stacking (#23513)</td>
+<td>Optimizes Score API embedding pipeline by hoisting placeholder scanning and specializing positional-embedding stacking.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23513">#23513</a></td>
+</tr>
+</tbody></table>
+<h3 id="3-Bug-Fixes"><a href="#3-Bug-Fixes" class="headerlink" title="3. Bug Fixes"></a>3. Bug Fixes</h3><table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>Summary</th>
+<th>PR Link</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[BugFix] correct host leaf status check from evicted to backuped (#23537)</td>
+<td>Fixes a one-word logic error in hierarchical radix cache that misidentified backuped leaves as evicted.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23537">#23537</a></td>
+</tr>
+<tr>
+<td>fix(moe): repair dead import in fused_moe_native after MoE refactor (#24069)</td>
+<td>Restores a broken import in the native fused-MoE path following the recent MoE refactor.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24069">#24069</a></td>
+</tr>
+<tr>
+<td>[Fix] FP8 Qwen3-Next quant error by removing fallback fused shards (#23973)</td>
+<td>Removes incorrect fallback fused-shard logic that broke FP8 quantization on Qwen3-Next.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23973">#23973</a></td>
+</tr>
+<tr>
+<td>fix(lora): avoid CUDA graph-breaking scalar assignment in seg_indptr (#23738)</td>
+<td>Replaces a scalar assignment with a tensor operation to keep LoRA segments inside CUDA graphs.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23738">#23738</a></td>
+</tr>
+<tr>
+<td>allow requests with exactly context_len total tokens (#22546)</td>
+<td>Removes an off-by-one check so requests whose prompt length exactly equals <code>context_len</code> are accepted.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22546">#22546</a></td>
+</tr>
+<tr>
+<td>[SWA] Fix missing mamba_indices parameter in cpu copy interface (#24026)</td>
+<td>Adds the missing <code>mamba_indices</code> argument to the CPU-copy wrapper used in sliding-window attention.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24026">#24026</a></td>
+</tr>
+<tr>
+<td>[PD][Bugfix] fix mamba cache capping (#22462)</td>
+<td>Prevents mamba extra-buffer from being used when decode disaggregation forces chunk cache.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22462">#22462</a></td>
+</tr>
+<tr>
+<td>[Bug Fix] missing index&#x2F;KV transfer for MTP layer in NSA disaggregation (#23539)</td>
+<td>Restores omitted index and KV transfers for the Multi-Token Prediction layer during NSA decode&#x2F;prefill disaggregation.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23539">#23539</a></td>
+</tr>
+<tr>
+<td>fix: rename mimo spec threshold attr to num_accepted_drafts_thres (#24118)</td>
+<td>Renames the MIMO speculative-decoding threshold attribute to a clearer, consistent name.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24118">#24118</a></td>
+</tr>
+<tr>
+<td>fix(qwen3_5): broadcast per-tensor scale in _make_packed_weight_loader for FP8 models (#23062)</td>
+<td>Ensures per-tensor FP8 scales are correctly broadcast when loading packed Qwen3.5 weights.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23062">#23062</a></td>
+</tr>
+<tr>
+<td>fix the compatibility between –moe-dense-tp-size 1 and piecewise cuda graph (#23972)</td>
+<td>Repairs CUDA-graph capture when MoE dense TP size is set to 1.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23972">#23972</a></td>
+</tr>
+<tr>
+<td>[NPU] fix some npu error with OffloaderV2 (#19541)</td>
+<td>Resolves multiple runtime errors in the NPU OffloaderV2 path.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/19541">#19541</a></td>
+</tr>
+</tbody></table>
+<h3 id="4-CI-Tooling-Documentation"><a href="#4-CI-Tooling-Documentation" class="headerlink" title="4. CI, Tooling &amp; Documentation"></a>4. CI, Tooling &amp; Documentation</h3><table>
+<thead>
+<tr>
+<th>Commit Message</th>
+<th>Summary</th>
+<th>PR Link</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ci: add &#x2F;rerun-group to rerun all registered tests in a group (#24023)</td>
+<td>New chat-op <code>/rerun-group</code> allows rerunning an entire registered test group in one command.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24023">#24023</a></td>
+</tr>
+<tr>
+<td>[Bench] fix bench_hf.py KeyError + reduce print spam + add –limit (#24079)</td>
+<td>Fixes a KeyError in the MMMU HF benchmark script, quiets verbose output, and adds a <code>--limit</code> flag.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24079">#24079</a></td>
+</tr>
+<tr>
+<td>[CI] Broaden stage-b-test-1-gpu-large runner pool to H100 + H200 (#24080)</td>
+<td>Expands the large-GPU CI pool to include both H100 and H200 runners.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24080">#24080</a></td>
+</tr>
+<tr>
+<td>[minor] Remove incorrect note after supporting w4a16 moe for DeepSeek V4 (#24035)</td>
+<td>Cleans up an outdated documentation note now that w4a16 MoE is supported for DeepSeek V4.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24035">#24035</a></td>
+</tr>
+<tr>
+<td>ci: consolidate rust + protoc install across workflows (#23700)</td>
+<td>Deduplicates Rust and protoc setup steps across GitHub Actions workflows.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23700">#23700</a></td>
+</tr>
+<tr>
+<td>[CI] Fix black formatting on main (unblocks PR #21247 lint) (#24093)</td>
+<td>Applies black formatter to resolve a lint blockage on main.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24093">#24093</a></td>
+</tr>
+<tr>
+<td>[misc] fix lint in main branch (#24095)</td>
+<td>Additional lint fixes for main-branch cleanliness.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24095">#24095</a></td>
+</tr>
+<tr>
+<td>relax the threshold in test_step3p5_flash_chain_mtp (#24105)</td>
+<td>Widens a tolerance in the Step-3.5 flash-chain MTP test to reduce flakiness.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24105">#24105</a></td>
+</tr>
+<tr>
+<td>pin the version of xgrammar to v0.1.32 (#24010)</td>
+<td>Locks xgrammar to v0.1.32 in XPU Docker and pyproject for reproducible builds.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24010">#24010</a></td>
+</tr>
+<tr>
+<td>[misc] update CI_PERMISSIONS.json (#24062)</td>
+<td>Updates CI permission metadata.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24062">#24062</a></td>
+</tr>
+<tr>
+<td>[AMD] Update AMD Nightly Test checkout mechanism (#24112)</td>
+<td>Refactors AMD nightly CI checkout steps for reliability.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24112">#24112</a></td>
+</tr>
+<tr>
+<td>[diffusion] CI: change ground truth upload path and improve publish script (#24120)</td>
+<td>Adjusts diffusion-model ground-truth artifact paths and polishes the publish script.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24120">#24120</a></td>
+</tr>
+<tr>
+<td>[Docs] quick fix delete –enable-dp-attention in sgl-jax (#24052)</td>
+<td>Removes a stale <code>--enable-dp-attention</code> reference from the sgl-jax documentation.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24052">#24052</a></td>
+</tr>
+<tr>
+<td>[CI] Remove orphaned test&#x2F;srt&#x2F;ascend and test&#x2F;srt&#x2F;configs (#24145)</td>
+<td>Deletes unused Ascend test directories and config files.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24145">#24145</a></td>
+</tr>
+<tr>
+<td>[AMD] Nightly image release for deepseek v4 (#24155)</td>
+<td>Adds AMD nightly Docker image build targeting DeepSeek V4.</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24155">#24155</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="Statistics"><a href="#Statistics" class="headerlink" title="Statistics"></a>Statistics</h2><ul>
+<li><strong>Total commits</strong>: 38</li>
+<li><strong>Bug fixes</strong>: 12</li>
+<li><strong>Performance optimizations &#x2F; refactoring</strong>: 6</li>
+<li><strong>New model support &#x2F; extensions</strong>: 4</li>
+<li><strong>CI &#x2F; docs &#x2F; tooling</strong>: 15</li>
+<li><strong>Server argument changes</strong>: 4</li>
+<li><strong>Environment variable changes</strong>: 2</li>
+</ul>
+<hr>
+<p><em>Report generated on 2026-05-01 for commits merged during 2026-04-30 (UTC+08:00).</em></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2026/05/01/sglang-main-commit-summary-2026-04-30/">http://example.com/2026/05/01/sglang-main-commit-summary-2026-04-30/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/daily-summary/">daily-summary</a><a class="post-meta__tags" href="/tags/sglang/">sglang</a><a class="post-meta__tags" href="/tags/git/">git</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/04/30/SGLang-main-%E5%88%86%E6%94%AF-Commit-%E6%80%BB%E7%BB%93-2026-04-29/" title="SGLang main 分支 Commit 总结 2026-04-29"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">SGLang main 分支 Commit 总结 2026-04-29</div></div><div class="info-2"><div class="info-item-1">本文档汇总了 SGLang 项目 main 分支在 2026-04-29 00:00–23:59 (UTC+8) 期间合并的全部 47 个 commit 的修改内容，按功能模块进行分类，并针对重点变更（新模型、性能优化、Bug Fix、CLI 参数、环境变量）进行提炼。  一、重点关注摘要1.1 新增&#x2F;增强的模型支持 Mistral Medium 3.5：新增对 128B Dense 旗舰合并模型的完整支持，含 YARN RoPE 256K 长上下文、Pixtral 风格视觉编码器、Eagle 投机解码及推理深度切换（reasoning_effort）能力。 Nemotron Omni V3 别名：为 Nemotron 3 Nano Omni VL 模型增加 omni-v3 别名映射，简化模型加载。 GptOssForCausalLM (Intel XPU)：在 Intel XPU 后端上启用该模型，仅支持 bfloat16，自动选择 intel_xpu attention backend。 Qwen3-Next MoE：启用 all-reduce fusion 优化，...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/04/25/SGLang-Daily-Commit-Summary-2026-04-24/" title="SGLang Daily Commit Summary 2026-04-24"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-25</div><div class="info-item-2">SGLang Daily Commit Summary 2026-04-24</div></div><div class="info-2"><div class="info-item-1">This report summarizes 39 commits merged into the main branch ofsgl-project&#x2F;sglang between2026-04-24 00:00:00 and 2026-04-24 23:59:59 (UTC+8).  1. New Model Support   Commit Message Summary PR Link    model: support Moss-VL (#23454) Adds full support for the Moss-VL multimodal model, including model implementation, processor, conversation parser, and flashinfer prefill backend integration. PR #23454   [diffusion] model: support LTX2.3 high quality pipeline (#23366) Introduces LTX2.3 HQ p...</div></div></div></a><a class="pagination-related" href="/2026/04/08/SGLang-%E6%AF%8F%E6%97%A5-Commit-%E6%80%BB%E7%BB%93-2026-04-07/" title="SGLang 每日 Commit 总结 (2026-04-07)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-08</div><div class="info-item-2">SGLang 每日 Commit 总结 (2026-04-07)</div></div><div class="info-2"><div class="info-item-1">SGLang Main Branch 每日 Commit 总结 (2026-04-07) 统计时间范围：UTC+8 2026-04-07 00:00 ~ 24:00共统计 30 个 commit，涉及 81 个文件变更   一、新模型支持昨日新增了以下模型的支持：    Commit Message 总结 PR 链接    [New Model] Gemma 4 (#21952) 新增 Google Gemma 4 模型支持，包括模型定义、MoE 配置、函数调用检测器等 PR #21952   model: support qwen3-asr (#22073) 新增 Qwen3-ASR 语音识别模型支持，包含模型配置、处理器和转录服务 PR #22073    二、性能优化   Commit Message 总结 PR 链接    [Perf] Restore torch.compile fusion for topk postprocessing (#21771) 恢复 topk 后处理的 torch.compile 融合优化，提升 MoE 路由性能 PR #21771   [...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">John Doe</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">19</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SGLang-Main-Branch-Commit-Summary-2026-04-30-UTC-8"><span class="toc-number">1.</span> <span class="toc-text">SGLang Main Branch Commit Summary (2026-04-30 UTC+8)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Overview"><span class="toc-number">1.1.</span> <span class="toc-text">Overview</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Highlighted-Changes"><span class="toc-number">1.2.</span> <span class="toc-text">Highlighted Changes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#New-Model-Support"><span class="toc-number">1.2.1.</span> <span class="toc-text">New Model Support</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Performance-Optimizations"><span class="toc-number">1.2.2.</span> <span class="toc-text">Performance Optimizations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bug-Fixes"><span class="toc-number">1.2.3.</span> <span class="toc-text">Bug Fixes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Server-Arguments-server-args-py"><span class="toc-number">1.2.4.</span> <span class="toc-text">Server Arguments (server_args.py)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Environment-Variables"><span class="toc-number">1.2.5.</span> <span class="toc-text">Environment Variables</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Commit-Details-by-Category"><span class="toc-number">1.3.</span> <span class="toc-text">Commit Details by Category</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-New-Model-Support"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. New Model Support</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Performance-Optimizations"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. Performance Optimizations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Bug-Fixes"><span class="toc-number">1.3.3.</span> <span class="toc-text">3. Bug Fixes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-CI-Tooling-Documentation"><span class="toc-number">1.3.4.</span> <span class="toc-text">4. CI, Tooling &amp; Documentation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Statistics"><span class="toc-number">1.4.</span> <span class="toc-text">Statistics</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/01/sglang-main-commit-summary-2026-04-30/" title="SGLang Main Branch Commit Summary (2026-04-30 UTC+8)">SGLang Main Branch Commit Summary (2026-04-30 UTC+8)</a><time datetime="2026-05-01T03:07:02.000Z" title="Created 2026-05-01 11:07:02">2026-05-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/30/SGLang-main-%E5%88%86%E6%94%AF-Commit-%E6%80%BB%E7%BB%93-2026-04-29/" title="SGLang main 分支 Commit 总结 2026-04-29">SGLang main 分支 Commit 总结 2026-04-29</a><time datetime="2026-04-30T03:09:24.000Z" title="Created 2026-04-30 11:09:24">2026-04-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/29/SGLang-%E6%AF%8F%E6%97%A5-Commit-%E6%80%BB%E7%BB%93-2026-04-28/" title="SGLang 每日 Commit 总结 (2026-04-28)">SGLang 每日 Commit 总结 (2026-04-28)</a><time datetime="2026-04-29T03:30:00.000Z" title="Created 2026-04-29 11:30:00">2026-04-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/28/sglang-daily-commit-2026-04-27/" title="Sglang 每日 Commit 总结 - 2026-04-27">Sglang 每日 Commit 总结 - 2026-04-27</a><time datetime="2026-04-28T00:00:00.000Z" title="Created 2026-04-28 08:00:00">2026-04-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/sglang_daily_report_2026-04-26/" title="Sglang Main 分支每日提交总结 (2026-04-26)">Sglang Main 分支每日提交总结 (2026-04-26)</a><time datetime="2026-04-27T03:00:00.000Z" title="Created 2026-04-27 11:00:00">2026-04-27</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By John Doe</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
