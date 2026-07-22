@@ -1,0 +1,1658 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="SGLang 每周 Commit 总结 - 2026-06-08 ~ 2026-06-14本文总结了 SGLang 项目在 2026-06-08 ~ 2026-06-14 (UTC+8) 的 main 分支提交，共计 336 个 commit。 概览   分类 数量 占比    新模型&#x2F;新功能 26 7.7%   性能优化 53 15.8%   Bug 修复 101 30.1%   工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2026/06/15/sglang-weekly-summary-2026-W24/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="SGLang 每周 Commit 总结 - 2026-06-08 ~ 2026-06-14本文总结了 SGLang 项目在 2026-06-08 ~ 2026-06-14 (UTC+8) 的 main 分支提交，共计 336 个 commit。 概览   分类 数量 占比    新模型&#x2F;新功能 26 7.7%   性能优化 53 15.8%   Bug 修复 101 30.1%   工具">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
+<meta property="article:published_time" content="2026-06-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-22T02:45:13.277Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="commit-log">
+<meta property="article:tag" content="sglang">
+<meta property="article:tag" content="weekly-summary">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "url": "http://example.com/2026/06/15/sglang-weekly-summary-2026-W24/",
+  "image": "http://example.com/img/butterfly-icon.png",
+  "datePublished": "2026-06-14T16:00:00.000Z",
+  "dateModified": "2026-07-22T02:45:13.277Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "John Doe",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2026/06/15/sglang-weekly-summary-2026-W24/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hexo</span></a><a class="nav-page-title" href="/"><span class="site-name">Hexo</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">Untitled</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-06-14T16:00:00.000Z" title="Created 2026-06-15 00:00:00">2026-06-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-22T02:45:13.277Z" title="Updated 2026-07-22 10:45:13">2026-07-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/SGLang/">SGLang</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="SGLang-每周-Commit-总结-2026-06-08-2026-06-14"><a href="#SGLang-每周-Commit-总结-2026-06-08-2026-06-14" class="headerlink" title="SGLang 每周 Commit 总结 - 2026-06-08 ~ 2026-06-14"></a>SGLang 每周 Commit 总结 - 2026-06-08 ~ 2026-06-14</h1><p>本文总结了 SGLang 项目在 2026-06-08 ~ 2026-06-14 (UTC+8) 的 main 分支提交，共计 336 个 commit。</p>
+<h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><table>
+<thead>
+<tr>
+<th>分类</th>
+<th>数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>新模型&#x2F;新功能</td>
+<td>26</td>
+<td>7.7%</td>
+</tr>
+<tr>
+<td>性能优化</td>
+<td>53</td>
+<td>15.8%</td>
+</tr>
+<tr>
+<td>Bug 修复</td>
+<td>101</td>
+<td>30.1%</td>
+</tr>
+<tr>
+<td>工具&#x2F;重构&#x2F;CI</td>
+<td>127</td>
+<td>37.8%</td>
+</tr>
+<tr>
+<td>文档</td>
+<td>29</td>
+<td>8.6%</td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td><strong>336</strong></td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody></table>
+<h2 id="新模型-新功能"><a href="#新模型-新功能" class="headerlink" title="新模型&#x2F;新功能"></a>新模型&#x2F;新功能</h2><table>
+<thead>
+<tr>
+<th>提交</th>
+<th>摘要</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28149">#28149</a></td>
+<td><code>Support GLM-4.7 function calling via structural tags</code> — 支持 GLM-4.7 通过结构化标签实现函数调用</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28110">#28110</a></td>
+<td><code>[LoRA] Support DSA indexer LoRA targets for GLM-5.1 / DeepSeek-V3.2-family models</code> — 为 GLM-5.1&#x2F;DSV3.2 系列模型支持 DSA 索引器 LoRA 目标</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27378">#27378</a></td>
+<td><code>feat: Support HiCache for MiMo-V2 models (1/N)</code> — 为 MiMo-V2 模型支持 HiCache 分层缓存</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/18182">#18182</a></td>
+<td><code>[AMD][Quantization] Online MXFP4 quantization 2/N - FP8 to MXFP4 requantization on AMD GPUs</code> — AMD GPU 上的在线 MXFP4 量化（FP8 到 MXFP4 重量化）</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27449">#27449</a></td>
+<td><code>[jit-kernel] Support per token group quant 8bit v2 jit kernel</code> — JIT 内核支持 per-token group 8bit 量化 v2</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24955">#24955</a></td>
+<td><code>Support Nemotron DP attention and MTP</code> — 支持 Nemotron 的数据并行注意力和多令牌预测</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28098">#28098</a></td>
+<td><code>Add DeepSeek V4 MTP acceptance length checks</code> — 添加 DeepSeek V4 多令牌预测接受长度检查</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26278">#26278</a></td>
+<td><code>Support MiMo v2 ASR</code> — 支持 MiMo v2 ASR 自动语音识别模型</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26347">#26347</a></td>
+<td><code>Support for Zyphra zaya1 model</code> — 支持 Zyphra zaya1 模型</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26083">#26083</a></td>
+<td><code>Implement online nvfp4 quantization</code> — 实现在线 NVFP4 量化</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23000">#23000</a></td>
+<td><code>[Feature] Spec V2 DFlash Support</code> — Spec V2 支持 DFlash 推测解码</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26147">#26147</a></td>
+<td><code>[NPU] Add Gemma4 Sliding Window Attention support on Ascend backend</code> — NPU Ascend 后端支持 Gemma4 滑动窗口注意力</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/25455">#25455</a></td>
+<td><code>[NPU] MiMo-V2-Flash Adaptation</code> — NPU 适配 MiMo-V2-Flash 模型</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24390">#24390</a></td>
+<td><code>[XPU] Enable NVIDIA-Nemotron-3-Nano-30B-A3B-BF16 on Intel XPU backend</code> — Intel XPU 后端支持 Nemotron-3-Nano-30B</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26717">#26717</a></td>
+<td><code>[NPU] RL update_weights_from_disk/ tensor /distributed</code> — NPU 支持强化学习权重更新（磁盘&#x2F;张量&#x2F;分布式）</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22253">#22253</a></td>
+<td><code>[EPD] Support dynamic encoder register</code> — EPD 支持动态编码器注册</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/17260">#17260</a></td>
+<td><code>[Feature] [Ngram spec] Support ngram spec v2</code> — 支持 ngram 推测解码 V2</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27394">#27394</a></td>
+<td><code>feat(agentic router): add sticky-session routing policy</code> — 智能路由器添加粘性会话路由策略</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27531">#27531</a></td>
+<td><code>[diffusion] model: support SANA-WM with streaming support</code> — Diffusion 模型支持 SANA-WM 及流式推理</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27607">#27607</a></td>
+<td><code>Support spec v2 for Frozen-KV MTP; remove v1 worker</code> — Frozen-KV MTP 支持 Spec V2 并移除 V1 worker</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27463">#27463</a></td>
+<td><code>Support topk &gt; 1 tree drafting for mamba/hybrid-linear models on spec v2</code> — Spec V2 支持 mamba&#x2F;混合线性模型的 topk&gt;1 树草稿</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26460">#26460</a></td>
+<td><code>[Intel GPU][Encoder] Add xpu_attn backend for encoder vision attention</code> — Intel GPU 添加编码器视觉注意力 XPU 后端</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/21197">#21197</a></td>
+<td><code>[NPU] adaptation to support deterministic inference</code> — NPU 适配支持确定性推理</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/10950">#10950</a></td>
+<td><code>Support encoder_decoder on cpu_graph_runner</code> — CPU 图运行器支持 encoder_decoder 架构</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/25950">#25950</a></td>
+<td><code>Mistral3 add tensor parallel support for diffusion text encoder</code> — Mistral3 扩散文本编码器添加张量并行支持</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28184">#28184</a></td>
+<td><code>[diffusion] feat: add --warmup-mode enum server arg</code> — Diffusion 添加预热模式枚举服务器参数</td>
+</tr>
+</tbody></table>
+<h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><table>
+<thead>
+<tr>
+<th>提交</th>
+<th>摘要</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28071">#28071</a></td>
+<td><code>[diffusion] feat: enable spatial-shard vae decode across GPUs</code> — Diffusion 启用跨 GPU 空间分片 VAE 解码</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27965">#27965</a></td>
+<td><code>[perf] reduce overhead of fill_ids list reconstruction and decref</code> — 减少 fill_ids 列表重建和引用释放的开销</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26983">#26983</a></td>
+<td><code>numa: bind within allowed CPUs when affinity is already constrained</code> — NUMA 在已约束亲和性时在允许 CPU 内绑定</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27469">#27469</a></td>
+<td><code>dflash add sliding window attention draft layer support</code> — DFlash 添加滑动窗口注意力草稿层支持</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28169">#28169</a></td>
+<td><code>[diffusion] UX: reduce attention backend log noise</code> — Diffusion 降低注意力后端日志噪声</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26188">#26188</a></td>
+<td><code>[Apple Silicon] [MLX] Fuse SwiGLU activation into gate gather_qmv for SwitchGLU MoE blocks</code> — Apple Silicon MLX 将 SwiGLU 激活融合到 MoE 门控</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26924">#26924</a></td>
+<td><code>[4/N] Qwen3.5Opt: Overlap mamba verify update with draft extend</code> — Qwen3.5 优化：将 mamba 验证更新与草稿扩展重叠</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27739">#27739</a></td>
+<td><code>step3.5 flash revise for graph mode and use triton activation</code> — Step3.5 Flash 针对图模式优化并使用 Triton 激活</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27720">#27720</a></td>
+<td><code>[DeepSeek V3] Defer moe finalize and fused it with main stream add</code> — DeepSeek V3 延迟 MoE 最终化并与主流加法融合</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27510">#27510</a></td>
+<td><code>[deepseek] Enable DP attention + TBO + shared experts fusion</code> — DeepSeek 启用 DP 注意力 + TBO + 共享专家融合</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27935">#27935</a></td>
+<td><code>[AMD] Support unified_kv_triton for disaggregation</code> — AMD 支持统一 KV Triton 用于解聚合</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27875">#27875</a></td>
+<td><code>[diffusion] optimize: enable vae parallel decode with cfg-parallel</code> — Diffusion 启用 CFG 并行 VAE 解码</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27826">#27826</a></td>
+<td><code>[diffusion] optimize: optimize flux1 tensor parallel sharding</code> — 优化 Flux1 张量并行分片</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27402">#27402</a></td>
+<td><code>[sgl] proactively release out-of-window SWA slots after chunked prefill</code> — 分块预填充后主动释放窗口外 SWA 槽位</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26204">#26204</a></td>
+<td><code>Optimize Qwen3 Next FP8 MoE on H200</code> — 优化 H200 上 Qwen3 Next FP8 MoE</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27896">#27896</a></td>
+<td><code>[Perf] Skip per-call mat_a/scales_a padding in cutlass FP8 blockwise GEMM</code> — Cutlass FP8 GEMM 跳过每次调用的矩阵填充</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26288">#26288</a></td>
+<td><code>[PD][AMD]: incremental KV transfer with decode radix cache</code> — AMD PD 使用解码基数缓存的增量 KV 传输</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27444">#27444</a></td>
+<td><code>[UnifiedTree]: Pin host buffers across async H→D in UnifiedRadixCache.load_back</code> — 统一基数缓存异步 H→D 传输中固定主机缓冲区</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26082">#26082</a></td>
+<td><code>perf: eliminate CUDA syncs in VLM embed path</code> — 消除 VLM 嵌入路径中的 CUDA 同步</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27978">#27978</a></td>
+<td><code>[AMD] Cache unified_kv swa_loc once per step instead of per layer</code> — AMD 每步缓存一次 SWA 位置而非每层</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27617">#27617</a></td>
+<td><code>[SWA] Cache full→SWA out_cache_loc per forward across attention backends</code> — 跨注意力后端缓存 SWA 输出缓存位置</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27630">#27630</a></td>
+<td><code>[AMD] Fuse sigmoid + mul attention output gate into single Triton kernel</code> — AMD 将 sigmoid+mul 注意力输出门融合为单个 Triton 内核</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27583">#27583</a></td>
+<td><code>[AMD] Enable fused GDN QKV split Triton kernel on HIP</code> — AMD HIP 启用融合 GDN QKV 分割 Triton 内核</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27656">#27656</a></td>
+<td><code>[AMD][Perf] Fuse QK RMSNorm + gate extraction Triton kernel for Qwen3.5 on HIP</code> — AMD 为 Qwen3.5 融合 QK RMSNorm + 门控提取内核</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27289">#27289</a></td>
+<td><code>[ROCm] dsv4: remove the redundant fp8 scale transpose-copy on decode</code> — ROCm DSV4 解码时移除冗余 FP8 缩放转置复制</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27431">#27431</a></td>
+<td><code>[diffusion] Run LTX-2 VAE decode in channels_last_3d (faster decode, lower peak memory)</code> — Diffusion LTX-2 VAE 使用 channels_last_3d 加速解码</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26874">#26874</a></td>
+<td><code>Speed up dump comparator percentile computation using numpy</code> — 使用 numpy 加速 dump 比较器百分位计算</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27841">#27841</a></td>
+<td><code>Remove MoE prefill CUDA graph disable guard</code> — 移除 MoE 预填充 CUDA 图禁用保护</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27063">#27063</a></td>
+<td><code>[AMD] Optimize gpt-oss-120B performance</code> — 优化 AMD 上 GPT-OSS-120B 性能</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27857">#27857</a></td>
+<td><code>[BCG] Share output buffers across capture sizes + typed ShapeKey</code> — BCG 跨捕获大小共享输出缓冲区并使用类型化 ShapeKey</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27941">#27941</a></td>
+<td><code>Enable PDL for GPT-OSS tinygemm router</code> — 为 GPT-OSS tinygemm 路由器启用 PDL</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27590">#27590</a></td>
+<td><code>[diffusion] feat: use fused w8a8 kernel for Ideogram4 weight-only linear as an opt-in</code> — Diffusion Ideogram4 使用融合 w8a8 内核（可选）</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27854">#27854</a></td>
+<td><code>[AMD][DFlash] Enable Fused KV Materialization</code> — AMD DFlash 启用融合 KV 实例化</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/25954">#25954</a></td>
+<td><code>add LRU eviction for mooncake embedding cache</code> — 为 Mooncake 嵌入缓存添加 LRU 驱逐策略</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26670">#26670</a></td>
+<td><code>[HiCache] Add opt-in LRU eviction to file storage backend (CP-aware)</code> — HiCache 文件存储后端添加可选 LRU 驱逐（CP 感知）</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27671">#27671</a></td>
+<td><code>Defer DeepGEMM PDL setup to worker init</code> — 将 DeepGEMM PDL 设置延迟到 worker 初始化</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/25195">#25195</a></td>
+<td><code>[BCG] Support breakable CUDA graph for DeepSeek V4 DP attention</code> — BCG 支持 DeepSeek V4 DP 注意力的可中断 CUDA 图</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27233">#27233</a></td>
+<td><code>[Spec] Fuse small kernels under gather_spec_extras</code> — Spec 融合 gather_spec_extras 下的小内核</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27736">#27736</a></td>
+<td><code>[diffusion] feat: progressive resolution growing for Ideogram 4 via GPU DCT upsampling</code> — Diffusion Ideogram4 通过 GPU DCT 上采样实现渐进式分辨率增长</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27524">#27524</a></td>
+<td><code>[diffusion] feat: progressive resolution growing for image and video models</code> — Diffusion 图像和视频模型的渐进式分辨率增长</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22734">#22734</a></td>
+<td><code>MSCCL++ Integration</code> — 集成 MSCCL++ 通信库</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27672">#27672</a></td>
+<td><code>Add bucketed multi-dir layout for NIXL file storage</code> — NIXL 文件存储添加分桶多目录布局</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26922">#26922</a></td>
+<td><code>[PD][MoRI] Drive KV transfers with a sharded synchronous worker pool</code> — MoRI 使用分片同步 worker 池驱动 KV 传输</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27380">#27380</a></td>
+<td><code>[AMD] Add unified kv attention support in dpsk-v4</code> — AMD 在 DSV4 中添加统一 KV 注意力支持</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23927">#23927</a></td>
+<td><code>[AMD] Replace fp8 mla with fp8 mha kernel for diffusion model aiter backend</code> — AMD 用 FP8 MHA 内核替换扩散模型的 FP8 MLA</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22299">#22299</a></td>
+<td><code>[AMD] Enable Piecewise CUDA Graph for AMD GPUs</code> — AMD GPU 启用分段 CUDA 图</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27468">#27468</a></td>
+<td><code>dflash piecewise cuda graphs support</code> — DFlash 支持分段 CUDA 图</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22985">#22985</a></td>
+<td><code>[AMD] Support eplb for moriep</code> — AMD MoRI EP 支持 EPLB</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22786">#22786</a></td>
+<td><code>[AMD][diffusion] Add FlyDSL fused normalization kernels for ROCm diffusion models</code> — AMD ROCm 扩散模型添加 FlyDSL 融合归一化内核</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27429">#27429</a></td>
+<td><code>[codex] Centralize more inline Triton kernels</code> — 集中更多内联 Triton 内核</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28076">#28076</a></td>
+<td><code>[perf] remove several h2d sync</code> — 移除多个 H2D 同步点</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27488">#27488</a></td>
+<td><code>[KDA] Add CuteDSL Prefill Kernel on SM100</code> — SM100 添加 CuteDSL 预填充内核</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28160">#28160</a></td>
+<td><code>feat: add decode clear steps env var</code> — 添加解码清除步数环境变量以优化内存管理</td>
+</tr>
+</tbody></table>
+<h2 id="Bug-修复"><a href="#Bug-修复" class="headerlink" title="Bug 修复"></a>Bug 修复</h2><table>
+<thead>
+<tr>
+<th>提交</th>
+<th>摘要</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26971">#26971</a></td>
+<td><code>fix(io_struct): index extra_key per sub-request in batched GenerateReqInput</code> — 批量请求中按子请求索引 extra_key</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/25975">#25975</a></td>
+<td><code>Fix prefill delayer wait histograms always observing 0</code> — 修复预填充延迟器等待直方图始终为 0</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28143">#28143</a></td>
+<td><code>fix(health): make health-check rid unique across tokenizer workers</code> — 使健康检查 rid 在分词器 worker 间唯一</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28153">#28153</a></td>
+<td><code>fix(sampling): reject non-finite temperature in SamplingParams.verify</code> — 拒绝采样参数中的非有限温度值</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27869">#27869</a></td>
+<td><code>Fix Qwen3.5 deterministic batch-invariant logprobs</code> — 修复 Qwen3.5 确定性批量不变 logprobs</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23653">#23653</a></td>
+<td><code>fix: prevent stale bitmask leakage in LLGuidance grammar backend</code> — 防止 LLGuidance 语法后端的陈旧位掩码泄漏</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27953">#27953</a></td>
+<td><code>Fix missing draft KV pool transfers in HybridCacheController</code> — 修复混合缓存控制器中缺失的草稿 KV 池传输</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27855">#27855</a></td>
+<td><code>[AMD] fix moriep quant kernel not implemented issue</code> — 修复 AMD MoRI EP 量化内核未实现的问题</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26009">#26009</a></td>
+<td><code>[HiCache] fix: clear storage reset state</code> — HiCache 清除存储重置状态</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28094">#28094</a></td>
+<td><code>fix(server): serialize nested dict config values as JSON</code> — 服务器嵌套字典配置值序列化为 JSON</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28026">#28026</a></td>
+<td><code>[Bugfix][Spec] Fix multi-layer EAGLE DRAFT_EXTEND_V2 attn-TP logprob metadata capture</code> — 修复多层 EAGLE V2 attn-TP logprob 元数据捕获</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28102">#28102</a></td>
+<td><code>Fix DP attention + EP mode of Nemotron</code> — 修复 Nemotron 的 DP 注意力 + EP 模式</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28088">#28088</a></td>
+<td><code>fix(frontend): return HTTP 400 for out-of-vocabulary token_ids_logprob</code> — 超词汇表 token_ids_logprob 返回 HTTP 400</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27945">#27945</a></td>
+<td><code>fix(moe): make FlashInfer A2A robust to collapsed global_num_tokens</code> — FlashInfer A2A 对 global_num_tokens 坍塌健壮</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28096">#28096</a></td>
+<td><code>[Spec] Fix EagleDraftWorker draft-extend attn backend assignment</code> — 修复 EAGLE 草稿 worker 注意力后端分配</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/25881">#25881</a></td>
+<td><code>Fix Responses API request handling</code> — 修复 Responses API 请求处理</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/25876">#25876</a></td>
+<td><code>Fix Anthropic Messages API compatibility</code> — 修复 Anthropic Messages API 兼容性</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28075">#28075</a></td>
+<td><code>[AMD] Fix CI base-a fwd_occupancy: disable SGLANG_SANITIZE_NAN_LOGITS</code> — AMD CI 禁用 NaN logits 清理以修复 fwd_occupancy</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28039">#28039</a></td>
+<td><code>fix(pd): disable overlap for spec+grammar in disagg decode loop</code> — PD 解聚合解码中禁用 spec+grammar 重叠</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28013">#28013</a></td>
+<td><code>Fix invalid KVFP4QuantizeUtil references</code> — 修复无效的 KVFP4QuantizeUtil 引用</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27737">#27737</a></td>
+<td><code>flashinfer swa kv pool fix (dflash gemma 4)</code> — FlashInfer SWA KV 池修复（DFlash Gemma 4）</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23862">#23862</a></td>
+<td><code>Fix --mem-fraction-static not accounting for EAGLE draft model KV cache</code> — 修复静态内存比例未计入 EAGLE 草稿模型 KV</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28022">#28022</a></td>
+<td><code>[PD] Fix resource leak on prealloc/transfer abort and idle check</code> — 修复 PD 预分配&#x2F;传输中止和空闲检查的资源泄漏</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27972">#27972</a></td>
+<td><code>[AMD] Fix DeepSeek-V4-Flash-FP8 on MI300</code> — 修复 MI300 上 DSV4-Flash-FP8</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27752">#27752</a></td>
+<td><code>[NPU][Bugfix] Fix accuracy issue in no-graph with MTP</code> — 修复 NPU 无图模式下 MTP 精度问题</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27529">#27529</a></td>
+<td><code>[AMD] Fix DeepSeek V4 Pro c128 state tensor dtype mismatch</code> — 修复 AMD DSV4 Pro c128 状态张量类型不匹配</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27846">#27846</a></td>
+<td><code>fix: per-sequence last-token embedding in EAGLE3/MTP draft for batched multimodal spec</code> — 修复批量多模态推测中 EAGLE3 的逐序列最后 token 嵌入</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27885">#27885</a></td>
+<td><code>[PD] Fix negative prefill kv_transfer_alloc_ms under optimistic prefill</code> — 修复乐观预填充下负 KV 传输分配时间</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27876">#27876</a></td>
+<td><code>[diffusion] fix: fix wan ti2v sp timestep padding</code> — 修复 Wan TI2V SP 时间步填充</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27922">#27922</a></td>
+<td><code>fix(deepgemm): align PP-parallel warmup bs to CP padding</code> — DeepGEMM PP 并行预热批量大小对齐 CP 填充</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27796">#27796</a></td>
+<td><code>[PD] Fix ZMQ stale socket reconnection in PD disaggregation</code> — 修复 PD 解聚合中 ZMQ 陈旧套接字重连</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27956">#27956</a></td>
+<td><code>Use the correct wrapper for fp4_quantize</code> — 使用正确的 fp4_quantize 包装器</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27883">#27883</a></td>
+<td><code>Fix fp16 NaN flake in spec CI: bf16 eagle fixture; sanitize NaN logits in sampler</code> — 修复推测 CI 中 FP16 NaN 问题</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27858">#27858</a></td>
+<td><code>[AMD] Fix the dsv4 performance of MoE issue.</code> — 修复 AMD 上 DSV4 MoE 性能问题</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27808">#27808</a></td>
+<td><code>bugfix for npu mtp graph runner</code> — 修复 NPU MTP 图运行器</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27782">#27782</a></td>
+<td><code>Fix gpt-oss-20b with mxfp4 support for Xeon</code> — 修复 Xeon 上 GPT-OSS-20B MXFP4 支持</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27811">#27811</a></td>
+<td><code>[AMD] Restore AMD piecewise CUDA graph support dropped by #23906</code> — 恢复被 #23906 丢弃的 AMD 分段 CUDA 图</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27190">#27190</a></td>
+<td><code>[Fix] Emulate PDEATHSIG on macOS to prevent orphaned worker processes</code> — macOS 上模拟 PDEATHSIG 防止孤儿进程</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27108">#27108</a></td>
+<td><code>[Unified] Fix UnifiedRadixCache write_backup issue in write-back mode</code> — 修复统一基数缓存写回模式问题</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27836">#27836</a></td>
+<td><code>[Metrics] Fix fwd_occupancy reading NaN on every decode log line</code> — 修复 fwd_occupancy 指标在解码日志中读取 NaN</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27779">#27779</a></td>
+<td><code>Fix paged SwA free mapping cleanup</code> — 修复分页 SWA 空闲映射清理</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27747">#27747</a></td>
+<td><code>fix: DSV4 BCG compress-prefill plan OOB on underfilled (tiny) prefill replay</code> — 修复 DSV4 BCG 压缩预填充小批量越界</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27840">#27840</a></td>
+<td><code>[Fix] Use int64 seq_lens across all CUDA graph runners and backends</code> — 所有 CUDA 图运行器统一使用 int64 seq_lens</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27709">#27709</a></td>
+<td><code>[diffusion] fix: cast to float32 in triton kernel to unblock torch.compile</code> — 修复扩散 Triton 内核类型转换以解除 torch.compile 阻塞</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27647">#27647</a></td>
+<td><code>[sgl] Fix kimi-k2.5 EAGLE3 MLA draft embeds for batched MM prefill</code> — 修复 Kimi-K2.5 EAGLE3 MLA 草稿嵌入</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27581">#27581</a></td>
+<td><code>[AMD] fix: handle per-frame 4D shift in native scale-shift kernel</code> — AMD 修复原生缩放移位内核的逐帧 4D 偏移</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/25077">#25077</a></td>
+<td><code>Fix(spec): Fix the crash issue in the FA3 backend when running with top-k &gt; 1 and page_size &gt; 1</code> — 修复 FA3 后端 top-k&gt;1 且 page_size&gt;1 时崩溃</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27491">#27491</a></td>
+<td><code>Fix SWA pool resolution for EAGLE draft workers</code> — 修复 EAGLE 草稿 worker 的 SWA 池解析</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27495">#27495</a></td>
+<td><code>Fix TRTLLM target verify query metadata</code> — 修复 TRTLLM 目标验证查询元数据</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/25980">#25980</a></td>
+<td><code>Fix spec v2 stop output boundary</code> — 修复 Spec V2 停止输出边界</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27549">#27549</a></td>
+<td><code>[Fix] Avoid applying cuda graph input-buffer registry on non-cuda devices</code> — 避免在非 CUDA 设备上应用 CUDA 图缓冲区注册</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26791">#26791</a></td>
+<td><code>Fix Gemma4 NVFP4 MoE default attention backend</code> — 修复 Gemma4 NVFP4 MoE 默认注意力后端</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23802">#23802</a></td>
+<td><code>fix: stop-string check misses early matches during speculative decoding</code> — 修复推测解码中停止字符串遗漏早期匹配</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27550">#27550</a></td>
+<td><code>fix(hiradix): wait for extra pool IO</code> — 修复 HiRadix 等待额外池 IO</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27597">#27597</a></td>
+<td><code>[lora] Exclude finished requests from running_loras</code> — LoRA 从运行列表中排除已完成请求</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27580">#27580</a></td>
+<td><code>[AMD] Fix AttributeError in GeneratedSharedPrefixDataset.from_args</code> — 修复 AMD 共享前缀数据集属性错误</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27545">#27545</a></td>
+<td><code>Fix NaN in triton EAGLE spec-v2 draft-extend CUDA graph at topk&gt;1</code> — 修复 EAGLE spec-v2 草稿扩展 CUDA 图 topk&gt;1 时 NaN</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27489">#27489</a></td>
+<td><code>Fix TP deadlock in unified radix cache writing_check / loading_check</code> — 修复统一基数缓存 TP 死锁</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/20260">#20260</a></td>
+<td><code>Fix port overflow in DP attention path when base port is near 65535</code> — 修复 DP 注意力端口接近 65535 时溢出</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26938">#26938</a></td>
+<td><code>Fix the _chunked_req_scheduled_last_iter flag with a content-based stash gate</code> — 修复分块请求调度标志的内容判断</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26999">#26999</a></td>
+<td><code>Fix fill_len asymmetric assignment statement in ignore-eos branch</code> — 修复 ignore-eos 分支中 fill_len 不对称赋值</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26659">#26659</a></td>
+<td><code>Fix Req fill_len (fill_ids) having dual semantics by restricting to truncated/committed</code> — 修复 fill_len 双语义问题</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27361">#27361</a></td>
+<td><code>Fix dual-chunk sparse fallback index overflow</code> — 修复双块稀疏回退索引溢出</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27485">#27485</a></td>
+<td><code>[Attn] Fix aiter MLA verify kv_indices under-alloc + shared assert_buffer_fits guard</code> — 修复 MLA 验证 kv_indices 分配不足</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27512">#27512</a></td>
+<td><code>[Spec] Clamp multimodal pad sentinels in spec-v2 draft prefill embedding</code> — Spec V2 草稿预填充中限制多模态填充哨兵</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27432">#27432</a></td>
+<td><code>[diffusion] Fix native text-encoder loading for T5/UMT5 encoder-decoder models</code> — 修复 T5&#x2F;UMT5 编码器-解码器模型的文本编码器加载</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27477">#27477</a></td>
+<td><code>fix dflash rope config parsing for updated transformers</code> — 修复 DFlash RoPE 配置在更新 transformers 下的解析</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27528">#27528</a></td>
+<td><code>Fix GPT-OSS MXFP4 hidden size reshape on SM10X</code> — 修复 SM10X 上 GPT-OSS MXFP4 隐藏大小重塑</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26351">#26351</a></td>
+<td><code>[bugfix] commit Mamba states after NGRAM target verify</code> — NGRAM 目标验证后提交 Mamba 状态</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27774">#27774</a></td>
+<td><code>[NPU] Fix dead patch_model monkey-patch breaking NPU torch.compile capture</code> — 修复 NPU 猴子补丁破坏 torch.compile 捕获</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/25794">#25794</a></td>
+<td><code>Fix Gemma3 ModelOpt kv-scale loading</code> — 修复 Gemma3 ModelOpt KV 缩放加载</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27017">#27017</a></td>
+<td><code>fix(schema): update tokens_after_end</code> — 修复 schema 中 tokens_after_end</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26320">#26320</a></td>
+<td><code>fix(gemma4): register image/video/audio token_regex for HF-expanded prompts</code> — 修复 Gemma4 多模态 token 正则注册</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26049">#26049</a></td>
+<td><code>Fix GLM NextN draft value head dim</code> — 修复 GLM NextN 草稿值头维度</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22367">#22367</a></td>
+<td><code>fix: correct off-by-one in vocab boundary check for token validation</code> — 修复词汇表边界检查的偏差</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24401">#24401</a></td>
+<td><code>[Fix] Reset positions tensor in CUDA graph runner when batch size differs</code> — 批量大小变化时重置 CUDA 图位置张量</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27645">#27645</a></td>
+<td><code>[BUG FIX] Fix DSA CPU offload mamba indices signature</code> — 修复 DSA CPU 卸载 mamba 索引签名</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27202">#27202</a></td>
+<td><code>[NPU][Bugfix] fix MTP accuracy regression on Qwen3 hybrid models</code> — 修复 NPU Qwen3 混合模型 MTP 精度回退</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27655">#27655</a></td>
+<td><code>[Unified Tree] fix compatibility with eagle key and l3 hicache</code> — 修复统一树与 EAGLE key 和 L3 HiCache 的兼容性</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/25883">#25883</a></td>
+<td><code>fix: forward update_mamba_state_after_mtp_verify in HybridAttnBackend</code> — 修复混合注意力后端 MTP 验证后 Mamba 状态更新</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27761">#27761</a></td>
+<td><code>[Spec] Remove dead prepare_for_verify / prepare_extend_after_decode</code> — 移除已废弃的 Spec V1 准备函数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27065">#27065</a></td>
+<td><code>[diffusion] fix: remove boolean arithmetic guard to fix compiling</code> — 移除布尔算术保护以修复编译问题</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27850">#27850</a></td>
+<td><code>[AMD] Fix DSA device-to-host direct test on rocm720</code> — 修复 AMD ROCm720 DSA 设备到主机直接测试</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27668">#27668</a></td>
+<td><code>Fix MiMo-V2.5-Pro DP-attention dp size in cookbook deployment snippet</code> — 修复 MiMo-V2.5-Pro DP 注意力大小文档</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26203">#26203</a></td>
+<td><code>Fix MLA scaling when YARN scaling is disabled</code> — 修复禁用 YARN 缩放时的 MLA 缩放</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27892">#27892</a></td>
+<td><code>[diffusion] Revert &quot;Mistral3 add tensor parallel support for diffusion text encoder&quot;</code> — 回退 Mistral3 扩散文本编码器张量并行</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27039">#27039</a></td>
+<td><code>[EPD] fix: zmq PUSH socket reconnect-aware connection management with tcp keepalive</code> — EPD ZMQ PUSH 套接字重连感知连接管理</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27919">#27919</a></td>
+<td><code>Revert &quot;[AMD] Fix DeepSeek V4 Pro c128 state tensor dtype mismatch&quot;</code> — 回退 AMD DSV4 Pro c128 状态张量类型修复</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22516">#22516</a></td>
+<td><code>fix(server): clamp piecewise_cuda_graph_max_tokens to context_length</code> — 限制分段 CUDA 图最大 tokens 到上下文长度</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26786">#26786</a></td>
+<td><code>[GPTQ] Refactor CPU quantization schemes</code> — 重构 GPTQ CPU 量化方案</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28095">#28095</a></td>
+<td><code>[Fix] Unquote ResponseTool annotation breaking lint on all PRs</code> — 修复 ResponseTool 注解引号导致所有 PR lint 失败</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27999">#27999</a></td>
+<td><code>[AMD] Pin maturin&lt;1.14 to fix ROCm image build failure</code> — 固定 maturin 版本修复 ROCm 镜像构建</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27758">#27758</a></td>
+<td><code>Revert &quot;Share BCG output buffers across capture sizes&quot;</code> — 回退 BCG 跨捕获大小共享输出缓冲区</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27608">#27608</a></td>
+<td><code>[PD] Fix prefill bootstrap registration failure with --host 0.0.0.0</code> — 修复 PD 预填充在 host 0.0.0.0 下的引导注册失败</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27342">#27342</a></td>
+<td><code>test: fix gemma GSM8K thresholds in nightly text eval</code> — 修复 nightly 评估中 Gemma GSM8K 阈值</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27486">#27486</a></td>
+<td><code>[spec] Misc defensive guards for EAGLE draft KV indexing</code> — EAGLE 草稿 KV 索引的防御性保护</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27838">#27838</a></td>
+<td><code>Disable async assert in Nemotron nightly tests</code> — 在 Nemotron nightly 测试中禁用异步断言</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26547">#26547</a></td>
+<td><code>Avoid calling filter_batch with chunked_req_to_exclude being things unrelated to chunked reqs</code> — 避免 filter_batch 传入无关的分块请求排除项</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27534">#27534</a></td>
+<td><code>[PD] Downgrade propagated rank failure logs from error to debug</code> — PD 传播的 rank 失败日志从 error 降级为 debug</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26850">#26850</a></td>
+<td><code>Add parallel-rank dump filenames and pipeline-global layer remapping to dumper</code> — Dumper 添加并行 rank 文件名和全局层重映射</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27293">#27293</a></td>
+<td><code>[HiCache][Dsv4] Don&#39;t cache C128 State pool in L3</code> — HiCache DSV4 不在 L3 缓存 C128 状态池</td>
+</tr>
+</tbody></table>
+<h2 id="工具-重构-CI"><a href="#工具-重构-CI" class="headerlink" title="工具&#x2F;重构&#x2F;CI"></a>工具&#x2F;重构&#x2F;CI</h2><table>
+<thead>
+<tr>
+<th>提交</th>
+<th>摘要</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26706">#26706</a></td>
+<td><code>[JIT Kernel] Multi-GPU test/bench framework for custom all-reduce + TP QKNorm</code> — JIT 内核多 GPU 测试&#x2F;基准框架</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28123">#28123</a></td>
+<td><code>[diffusion] CI: tighten perf baselines</code> — Diffusion CI 收紧性能基准线</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27102">#27102</a></td>
+<td><code>Eval accuracy gpqa aime25 mixins</code> — 评估精度 GPQA AIME25 混入</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28165">#28165</a></td>
+<td><code>Unify NVTX annotation helpers and split the enable gate per subsystem</code> — 统一 NVTX 注解辅助函数并按子系统拆分</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28177">#28177</a></td>
+<td><code>[diffusion] chore: resolve model_index.json Hub-first with local-cache fallback</code> — Diffusion 优先从 Hub 解析 model_index.json</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28127">#28127</a></td>
+<td><code>[diffusion] chore: improve server warmup coverage</code> — Diffusion 改进服务器预热覆盖</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27931">#27931</a></td>
+<td><code>[UnifiedTree] Use Qwen3-32B in unified radix pp kl tests and set KL threshold to 0.005</code> — 统一基数 PP KL 测试使用 Qwen3-32B</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28041">#28041</a></td>
+<td><code>Fix stale CUDA graph benchmark and docs refs</code> — 修复过时的 CUDA 图基准和文档引用</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26902">#26902</a></td>
+<td><code>[CI] add Precision Regression Test on Nightly Run CI</code> — CI 添加 nightly 精度回归测试</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28133">#28133</a></td>
+<td><code>[Spec] Clear dead DRAFT_EXTEND objects left after EAGLE v1 removal</code> — 清理 EAGLE v1 移除后的废弃对象</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28129">#28129</a></td>
+<td><code>[Spec] Remove deprecated EAGLE v1 DRAFT_EXTEND forward mode</code> — 移除已弃用的 EAGLE v1 DRAFT_EXTEND 前向模式</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27107">#27107</a></td>
+<td><code>[DeepEP] Enable fabric handles automatically when supported</code> — DeepEP 支持时自动启用 fabric handles</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28120">#28120</a></td>
+<td><code>Add prajjwal1 to CI_PERMISSIONS.json</code> — 添加 CI 权限</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28116">#28116</a></td>
+<td><code>chore: bump tokenspeed_mla 0.1.1 -&gt; 0.1.6</code> — 升级 tokenspeed_mla 依赖版本</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28107">#28107</a></td>
+<td><code>[Tiny] Cuda Graph Refactor Code Style Follow up</code> — CUDA 图重构代码风格跟进</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28108">#28108</a></td>
+<td><code>[CI] Enforce modern stage=/runner_config= form for dispatchable test suites</code> — CI 强制使用现代 stage&#x2F;runner_config 形式</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28112">#28112</a></td>
+<td><code>[AMD][DFlash] Add DFlash test to AMD CI</code> — AMD CI 添加 DFlash 测试</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28119">#28119</a></td>
+<td><code>[diffusion] warmup: improve diffusion server warmup</code> — Diffusion 改进服务器预热</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27817">#27817</a></td>
+<td><code>[AMD] ci: register 8 attention-backend unit tests to run on AMD CI</code> — AMD CI 注册 8 个注意力后端单元测试</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27724">#27724</a></td>
+<td><code>Bump ray minimum version to 2.55.1</code> — 升级 Ray 最低版本到 2.55.1</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27057">#27057</a></td>
+<td><code>[AMD] move shared expert check function to quark</code> — AMD 将共享专家检查函数移至 quark</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27913">#27913</a></td>
+<td><code>[Test] Add unit tests for srt/mem_cache/utils.py</code> — 添加内存缓存工具单元测试</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28117">#28117</a></td>
+<td><code>[Spec] Move eagle verify prepare_for_verify/sample to eagle_utils free helpers</code> — 将 EAGLE 验证函数移至 eagle_utils</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28105">#28105</a></td>
+<td><code>[Spec] Move prepare_for_draft to EagleDraftWorkerBase</code> — 将 prepare_for_draft 移至 EAGLE 草稿 worker 基类</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28093">#28093</a></td>
+<td><code>[Spec] Move draft-extend prep to EagleDraftWorkerBase; unify prepare_for_* names</code> — 统一草稿准备函数命名</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27785">#27785</a></td>
+<td><code>Fix PR-close cancellation skipping workflows beyond the first 30</code> — 修复 PR 关闭取消跳过超过 30 个的工作流</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27822">#27822</a></td>
+<td><code>[AMD] ci: add label-gated extra-a tier</code> — AMD CI 添加标签门控 extra-a 层</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28032">#28032</a></td>
+<td><code>[Spec] Centralize dummy verify-input capture; add carries_draft_hidden_states</code> — Spec 集中化虚拟验证输入捕获</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27662">#27662</a></td>
+<td><code>[Bench] Add consistent p90/p95/p99 percentiles for all latency metrics</code> — Bench 为所有延迟指标添加一致的百分位</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26678">#26678</a></td>
+<td><code>[mem_cache][3/N] refactor: move HiSparse allocators to allocator/hisparse.py</code> — 将 HiSparse 分配器移至独立模块</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27909">#27909</a></td>
+<td><code>[CI] Fix registered sigmoid gate mul test location</code> — CI 修复 sigmoid gate mul 测试位置</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27860">#27860</a></td>
+<td><code>ci(xpu): pull intel/sglang-dev:latest and clean workspace properly</code> — XPU CI 拉取最新镜像并清理工作区</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27157">#27157</a></td>
+<td><code>docker(xeon): support running container as non-root user</code> — Docker Xeon 支持非 root 用户运行</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27646">#27646</a></td>
+<td><code>[Intel GPU] Add sycl mrope pass for xpu device</code> — Intel GPU 添加 SYCL MRoPE pass</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27856">#27856</a></td>
+<td><code>Remove extra_pytest_path from pr-test.yml</code> — 从 PR 测试配置中移除 extra_pytest_path</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27759">#27759</a></td>
+<td><code>[UnifiedTree]: HybridModel launches HiCache via UnifiedTree by default.</code> — 混合模型默认通过统一树启动 HiCache</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27696">#27696</a></td>
+<td><code>[RL] Handle Mooncake buffers across memory release</code> — RL 跨内存释放处理 Mooncake 缓冲区</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27839">#27839</a></td>
+<td><code>[CI] Fix registered QK Gemma RMSNorm test location</code> — CI 修复 QK Gemma RMSNorm 测试位置</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27312">#27312</a></td>
+<td><code>[1/n] [CP] Simplify prefill context parallel server args</code> — 简化预填充上下文并行服务器参数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27799">#27799</a></td>
+<td><code>[Spec] NGRAMWorker on BaseSpecWorker; algo-owned verify-tree shape params</code> — Spec NGRAMWorker 重构</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27493">#27493</a></td>
+<td><code>[SPEC] feat: init adaptive spec params from config</code> — Spec 从配置初始化自适应推测参数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27386">#27386</a></td>
+<td><code>[router] Apply chat template before cache-aware hashing</code> — 路由器在缓存感知哈希前应用聊天模板</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/25939">#25939</a></td>
+<td><code>[AMD] ci: register 8 framework / unit tests to run on AMD CI</code> — AMD CI 注册 8 个框架&#x2F;单元测试</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27803">#27803</a></td>
+<td><code>[CI] Fix stale ngram bookkeeping owner sites</code> — CI 修复过时的 ngram 记录所有者</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27795">#27795</a></td>
+<td><code>[CI] Remove AMD DSv4 Docker publish job</code> — CI 移除 AMD DSV4 Docker 发布任务</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27781">#27781</a></td>
+<td><code>[CI] Move misplaced mhc kernel test into test/registered/kernels</code> — CI 移动错放的 mhc 内核测试</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26908">#26908</a></td>
+<td><code>[CI][PD] Add unit tests for nixl backend</code> — CI 添加 NIXL 后端单元测试</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27766">#27766</a></td>
+<td><code>[Docs] Remove the legacy release-docs.yml deploy workflow</code> — 移除遗留的发布文档部署工作流</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27695">#27695</a></td>
+<td><code>Bundle set_kv_buffer write targets into KVWriteLoc (loc + swa_loc)</code> — 将 KV 缓冲区写入目标打包为 KVWriteLoc</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27669">#27669</a></td>
+<td><code>[AMD] Update MoRI to v1.2.0</code> — AMD 更新 MoRI 到 v1.2.0</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27764">#27764</a></td>
+<td><code>[Spec] Extract move_accept_tokens_to_target_kvcache into spec_utils</code> — 将接受 token 移动函数提取到 spec_utils</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23906">#23906</a></td>
+<td><code>[Refactor] Cuda Graph Runner/Backend Refactor</code> — CUDA 图运行器&#x2F;后端重构</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27698">#27698</a></td>
+<td><code>[diffusion] refactor: refactor realtime control state and adapters</code> — Diffusion 重构实时控制状态和适配器</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27659">#27659</a></td>
+<td><code>Share BCG output buffers across capture sizes</code> — BCG 跨捕获大小共享输出缓冲区</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27722">#27722</a></td>
+<td><code>[AMD] Migrate 2-GPU kernel allreduce tests into the registered system</code> — AMD 迁移 2-GPU 内核 allreduce 测试</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/25007">#25007</a></td>
+<td><code>Add Arm64 INT8 MoE test coverage</code> — 添加 Arm64 INT8 MoE 测试覆盖</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27688">#27688</a></td>
+<td><code>Fix flaky hicache l3 mmlu nightly test</code> — 修复不稳定的 HiCache L3 MMLU nightly 测试</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27648">#27648</a></td>
+<td><code>ci(xpu): clean build artifacts in cleanup</code> — XPU CI 清理构建产物</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27697">#27697</a></td>
+<td><code>[diffusion] refactor: refactor realtime and model-specific stage modules</code> — Diffusion 重构实时和模型特定阶段模块</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27133">#27133</a></td>
+<td><code>update pytorch-xpu to 2.12</code> — 升级 PyTorch XPU 到 2.12</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27710">#27710</a></td>
+<td><code>Add UT guarding per-request bookkeeping clock ownership</code> — 添加逐请求簿记时钟所有权单元测试</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27453">#27453</a></td>
+<td><code>Remove FlashInfer GB transport workaround</code> — 移除 FlashInfer GB 传输变通方案</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27721">#27721</a></td>
+<td><code>Add TP server GPU process regression test</code> — 添加 TP 服务器 GPU 进程回归测试</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27599">#27599</a></td>
+<td><code>[Spec] Naming cleanup: contiguous draft-loc kernel + accepted-&gt;accept</code> — Spec 命名清理</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27552">#27552</a></td>
+<td><code>[Spec] Rename token resolver to _resolve_spec_v2_tokens; remove dead V1 helpers</code> — Spec 重命名 token 解析器并移除 V1</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28128">#28128</a></td>
+<td><code>feat(cookbook): generic config-declared flagSelects playground axis</code> — Cookbook 通用配置声明的 flagSelects 轴</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28066">#28066</a></td>
+<td><code>Add @alexnails as codeowner for srt/platforms</code> — 添加 platforms 代码所有者</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27994">#27994</a></td>
+<td><code>Remove outdated patch</code> — 移除过时补丁</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27966">#27966</a></td>
+<td><code>[Spec] Dedup post-verify mamba state commit into shared spec_utils helpers</code> — Spec 去重 mamba 状态提交</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27977">#27977</a></td>
+<td><code>[Spec] Remove the dead spec V1 scheduler paths</code> — 移除废弃的 Spec V1 调度器路径</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27973">#27973</a></td>
+<td><code>[DSV4] Use int64 for compressor out_loc tensors</code> — DSV4 压缩器使用 int64 out_loc 张量</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27984">#27984</a></td>
+<td><code>[lint] Enable Ruff UP037 to drop redundant quoted annotations</code> — Lint 启用 Ruff UP037 移除冗余引号注解</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27964">#27964</a></td>
+<td><code>[Spec] Retire Spec V1</code> — 退役 Spec V1</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27075">#27075</a></td>
+<td><code>Add DeepGEMM prerelease wheel tests</code> — 添加 DeepGEMM 预发布轮测试</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27307">#27307</a></td>
+<td><code>[RL] convert DeepSeek V4 APE layout through weight loader</code> — RL 通过权重加载器转换 DSV4 APE 布局</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27950">#27950</a></td>
+<td><code>[Spec] Fold the DFLASH worker base into DFlashWorkerV2 on BaseSpecWorker</code> — Spec 将 DFLASH worker 基类折叠到 V2</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27959">#27959</a></td>
+<td><code>[Spec] Remove the DFLASH V1 worker path</code> — 移除 DFLASH V1 worker 路径</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27952">#27952</a></td>
+<td><code>Bump spec logprob match delta for the bf16 eagle fixture</code> — 提升 bf16 EAGLE fixture 的 logprob 匹配容差</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27955">#27955</a></td>
+<td><code>[CI] Fix GB300 TestDummyWithSBO crash: disable NaN assert and coredump</code> — CI 修复 GB300 测试崩溃</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27957">#27957</a></td>
+<td><code>Add weireweire to CI permissions</code> — 添加 CI 权限</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27861">#27861</a></td>
+<td><code>test(xpu): add multi-feature and embedding stage-b tests</code> — XPU 添加多特性和嵌入测试</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27703">#27703</a></td>
+<td><code>ci(xpu): checkout dedicated dir for night build</code> — XPU CI nightly 构建专用目录</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27742">#27742</a></td>
+<td><code>test(sgl-router): cover sticky scale-up no-redistribution e2e</code> — 路由器粘性扩展无重分配 e2e 测试</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27506">#27506</a></td>
+<td><code>Add more testing for chunked prefill</code> — 添加更多分块预填充测试</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27502">#27502</a></td>
+<td><code>Add mixed-prefix gsm8k eval and its CPU unit test</code> — 添加混合前缀 GSM8K 评估及 CPU 单元测试</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27283">#27283</a></td>
+<td><code>[NPU] Enable consistency checking for diffusion tests</code> — NPU 启用扩散测试一致性检查</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27644">#27644</a></td>
+<td><code>[CI] Move JIT kernel tests + benchmarks to test/registered/jit</code> — CI 移动 JIT 内核测试到注册目录</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27605">#27605</a></td>
+<td><code>[JIT] Reuse JIT kernel build cache across CI runs</code> — JIT 跨 CI 运行重用内核构建缓存</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27627">#27627</a></td>
+<td><code>ci: run pr-test-extra on release branch cuts</code> — CI 在发布分支切割时运行额外 PR 测试</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27621">#27621</a></td>
+<td><code>ci: partition the H200 nightly Run test step across the matrix</code> — CI 分区 H200 nightly 测试步骤</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27612">#27612</a></td>
+<td><code>[router] Add /flush_cache endpoint to experimental sgl-router</code> — 实验路由器添加刷新缓存端点</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26635">#26635</a></td>
+<td><code>Improve registration in cpu_graph_runner</code> — 改进 CPU 图运行器注册</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27526">#27526</a></td>
+<td><code>[XPU CI] Re-enable stage B with docker-pull flow and split tests</code> — XPU CI 重新启用 stage B</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27533">#27533</a></td>
+<td><code>[Intel GPU] Enable fused_experts in fp8.py for quantized models on XPU</code> — Intel GPU XPU 启用融合专家</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27415">#27415</a></td>
+<td><code>[XPU][NIXL] Use uint64 for XPU address arithmetic in prep handle builders</code> — XPU NIXL 使用 uint64 地址运算</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27235">#27235</a></td>
+<td><code>refactor: replace oversized 1.3MB tiny_tokenizer.json fixture with a genuinely tiny byte-level BPE fixture</code> — 重构：替换过大的 tokenizer fixture</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27577">#27577</a></td>
+<td><code>[NPU] Fix CI</code> — NPU 修复 CI</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27387">#27387</a></td>
+<td><code>build(sgl-kernel): support configurable mirrors for restricted networks</code> — 构建支持可配置镜像源</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27555">#27555</a></td>
+<td><code>[AMD] update ROCm AITER commit</code> — AMD 更新 ROCm AITER 提交</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27537">#27537</a></td>
+<td><code>[MUSA] bump torchada version to 0.1.59 and workaround PCG limitation.</code> — MUSA 升级 torchada 并规避 PCG 限制</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27242">#27242</a></td>
+<td><code>[MUSA][23/N] CI: Fix torchada preflight lock cleanup and add LLM server smoke test</code> — MUSA CI 修复 torchada 预检锁并添加冒烟测试</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27363">#27363</a></td>
+<td><code>[srt] Add sglang:weight_load_duration_seconds gauge with source label</code> — 添加权重加载时间指标</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24689">#24689</a></td>
+<td><code>[NPU] Add GitHub test summary and deduplicate test code. Part 2</code> — NPU 添加测试摘要并去重代码</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27542">#27542</a></td>
+<td><code>[EPD] Dynamic encoder registration cleanup</code> — EPD 动态编码器注册清理</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27538">#27538</a></td>
+<td><code>[AMD] ci: reinstall MoRI if Different from Dockerfile-pinned commit</code> — AMD CI 按需重装 MoRI</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27530">#27530</a></td>
+<td><code>Update code owners (AMD)</code> — 更新 AMD 代码所有者</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26885">#26885</a></td>
+<td><code>Cookbook renovation</code> — Cookbook 翻新</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27517">#27517</a></td>
+<td><code>docs: sync LMSYS SGLang blog cards</code> — 同步 LMSYS SGLang 博客卡片</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/25464">#25464</a></td>
+<td><code>[Spec] Deprecate Spec V1</code> — 弃用 Spec V1</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27554">#27554</a></td>
+<td><code>[UnifiedTree]: Support hicache metrics</code> — 统一树支持 HiCache 指标</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26548">#26548</a></td>
+<td><code>Extract release_req and retract_all as module-level free functions</code> — 提取请求释放为模块级函数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/26637">#26637</a></td>
+<td><code>Refactor Req.fill_ids into full_untruncated_fill_ids + fill_len with equivalence</code> — 重构 fill_ids 语义分离</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27496">#27496</a></td>
+<td><code>Update SGLang diffusion skills</code> — 更新 SGLang 扩散技能</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27282">#27282</a></td>
+<td><code>[XPU CI] Pull prebuilt nightly image instead of building per-stage</code> — XPU CI 拉取预构建 nightly 镜像</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27299">#27299</a></td>
+<td><code>ci(xpu): push latest tag and use 7-char SHA in nightly image tags</code> — XPU CI 推送 latest 标签</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27901">#27901</a></td>
+<td><code>feat: add NVTX markers for the scheduler main loop</code> — 为调度器主循环添加 NVTX 标记</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27866">#27866</a></td>
+<td><code>examples: add Chain-of-Verification (CoVe) hallucination reduction demo</code> — 添加 CoVe 幻觉减少示例</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/22817">#22817</a></td>
+<td><code>[diffusion] rl: extract post-training weight apis into mixins</code> — Diffusion RL 提取训练后权重 API</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28081">#28081</a></td>
+<td><code>[refactor] Fold FrozenKVMTPCudaGraphRunner onto the shared DecodeCudaGraphRunner base</code> — 重构折叠 FrozenKV MTP CUDA 图运行器</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27997">#27997</a></td>
+<td><code>fix(gateway): make sgl-model-gateway a cargo workspace so maturin 1.14 accepts</code> — 修复网关 cargo workspace 以兼容 maturin</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/23969">#23969</a></td>
+<td><code>[plugin][distributed] use active platform&#39;s backend in get_default_distributed_backend</code> — 分布式插件使用当前活跃平台的后端</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24860">#24860</a></td>
+<td><code>[Spec] Install EagleDraftExtendInput as the V2 draft-extend spec_info</code> — Spec V2 安装 EagleDraftExtendInput 作为草稿扩展 spec_info</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/25994">#25994</a></td>
+<td><code>Add EPD disaggregated encode tracing</code> — 添加 EPD 解聚合编码追踪</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27149">#27149</a></td>
+<td><code>[AMD] [CI] Add dsv4 accuracy PR gate to pr-test-amd-rocm720</code> — AMD CI 添加 DSV4 精度 PR 门控</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27505">#27505</a></td>
+<td><code>[AMD] Fix test_deepseek_r1_mxfp4_8gpu.py: disable async-assert probes on AMD CI</code> — AMD CI 禁用异步断言探针</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27615">#27615</a></td>
+<td><code>[Spec] Add nvtx to spec regions</code> — Spec 推测解码区域添加 NVTX 标记</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27967">#27967</a></td>
+<td><code>Add SGLANG_ENABLE_WAR_BARRIER to force-enable the overlap scheduler WAR barrier on non-CUDA</code> — 添加 WAR 屏障环境变量以支持非 CUDA 平台</td>
+</tr>
+</tbody></table>
+<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><table>
+<thead>
+<tr>
+<th>提交</th>
+<th>摘要</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27773">#27773</a></td>
+<td><code>[Docs] Fix outdated benchmark marker API in add-jit-kernel skill</code> — 修复 JIT 内核文档中过时的基准标记 API</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28150">#28150</a></td>
+<td><code>docs(minimax-m3): add high-concurrency throughput tip for H200 bf16</code> — MiniMax-M3 H200 高并发吞吐技巧文档</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27663">#27663</a></td>
+<td><code>[NPU] Best Practice Docs Splitting</code> — NPU 最佳实践文档拆分</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28078">#28078</a></td>
+<td><code>docs: add llm-d page under Advanced Features</code> — 在高级特性下添加 llm-d 页面</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27845">#27845</a></td>
+<td><code>docs: add cookbook-migrate-model skill from the Qwen3.5 pilot</code> — 添加模型迁移 Cookbook 技能文档</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28083">#28083</a></td>
+<td><code>[NPU] [DOC] Update server arguments to NPU support features page</code> — 更新 NPU 支持特性页面的服务器参数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28087">#28087</a></td>
+<td><code>[Doc] Fix some inconsistencies in the Nemotron Cookbook</code> — 修复 Nemotron Cookbook 中的不一致</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28064">#28064</a></td>
+<td><code>[Docs] Add Kimi K2.7 Code cookbook</code> — 添加 Kimi K2.7 Code Cookbook</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28062">#28062</a></td>
+<td><code>docs(minimax-m3): warm-steady-state benchmark numbers</code> — MiniMax-M3 暖稳态基准数据文档</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28061">#28061</a></td>
+<td><code>docs</code> — 文档更新</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28060">#28060</a></td>
+<td><code>doc: update docs for new model</code> — 更新新模型文档</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28016">#28016</a></td>
+<td><code>Revise the mimo-v2-flash best practice</code> — 修订 MiMo-V2-Flash 最佳实践文档</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27677">#27677</a></td>
+<td><code>[NPU] [DOC] replace &lt;code&gt; with backticks and remove obsolete params</code> — NPU 文档替换 code 标签并移除过时参数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27726">#27726</a></td>
+<td><code>[Docs] Update MegaMoE handling and rerun benchmarks</code> — 更新 MegaMoE 处理文档并重跑基准</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/24465">#24465</a></td>
+<td><code>[NVIDIA] Update Minimax-M2.5,M2.7 docs with flags for performance</code> — 更新 Minimax-M2.5&#x2F;M2.7 性能标志文档</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27714">#27714</a></td>
+<td><code>[Docs] Add Kimi-K2.6 NVFP4 and update Kimi-K2.5 cookbook guidance</code> — 添加 Kimi-K2.6 NVFP4 并更新 K2.5 Cookbook</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27708">#27708</a></td>
+<td><code>[Docs] Add GLM-5.1 NVFP4 to cookbook</code> — 添加 GLM-5.1 NVFP4 Cookbook</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27824">#27824</a></td>
+<td><code>docs: Diffusion Gemma cookbook</code> — Diffusion Gemma Cookbook</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27827">#27827</a></td>
+<td><code>docs: make playground issue template model field a free-form input</code> — Playground issue 模板模型字段改为自由输入</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27830">#27830</a></td>
+<td><code>[Docs] Restore right-hand ToC on the DeepSeek-V4 cookbook page</code> — 恢复 DSV4 Cookbook 页面右侧目录</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27842">#27842</a></td>
+<td><code>docs: cookbook benchmark accuracy labels come from the model config</code> — Cookbook 基准精度标签来源说明</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27767">#27767</a></td>
+<td><code>[diffusion] doc: update docs architecture</code> — 更新 Diffusion 文档架构</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27665">#27665</a></td>
+<td><code>add mimo best practice</code> — 添加 MiMo 最佳实践文档</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27409">#27409</a></td>
+<td><code>add lfm2.5 to new cookbook.</code> — 添加 LFM2.5 到新 Cookbook</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27626">#27626</a></td>
+<td><code>docs: update SANA-WM cookbook serve examples</code> — 更新 SANA-WM Cookbook 服务示例</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27198">#27198</a></td>
+<td><code>docs: add cookbook for SANA-WM</code> — 添加 SANA-WM Cookbook</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27660">#27660</a></td>
+<td><code>[AMD] update amd qwen3.5 cookbook</code> — 更新 AMD Qwen3.5 Cookbook</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27591">#27591</a></td>
+<td><code>[router] Add request/TTFT/worker metrics + Grafana dashboard to experimental sgl-router</code> — 实验路由器添加指标和 Grafana 仪表板</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27399">#27399</a></td>
+<td><code>Respect explicit --max-running-requests instead of clamping to heuristic</code> — 尊重用户显式指定的最大运行请求数</td>
+</tr>
+</tbody></table>
+<h2 id="server-args-py-新增参数"><a href="#server-args-py-新增参数" class="headerlink" title="server_args.py 新增参数"></a>server_args.py 新增参数</h2><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+<th>PR 链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--warmup-mode</code></td>
+<td>enum</td>
+<td>未明确</td>
+<td>Diffusion 服务器预热模式枚举参数</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28184">#28184</a></td>
+</tr>
+<tr>
+<td><code>--max-running-requests</code></td>
+<td>int</td>
+<td>启发式值</td>
+<td>尊重用户显式指定的最大运行请求数，不再被启发式值钳位</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27399">#27399</a></td>
+</tr>
+<tr>
+<td>context parallel server args (简化)</td>
+<td>未明确</td>
+<td>未明确</td>
+<td>简化预填充上下文并行的服务器参数</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27312">#27312</a></td>
+</tr>
+</tbody></table>
+<h2 id="新增环境变量"><a href="#新增环境变量" class="headerlink" title="新增环境变量"></a>新增环境变量</h2><table>
+<thead>
+<tr>
+<th>环境变量名</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+<th>PR 链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>SGLANG_DECODE_CLEAR_STEPS</code></td>
+<td>int</td>
+<td>未明确</td>
+<td>控制解码过程中清除步数的环境变量</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/28160">#28160</a></td>
+</tr>
+<tr>
+<td><code>SGLANG_ENABLE_WAR_BARRIER</code></td>
+<td>bool</td>
+<td>未明确（非 CUDA 平台默认关闭）</td>
+<td>强制启用重叠调度器 WAR 屏障，用于 AMD 等非 CUDA 平台</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/sgl-project/sglang/pull/27967">#27967</a></td>
+</tr>
+</tbody></table>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本周 SGLang 项目共计 336 个 commit，开发活跃度极高。主要亮点包括：</p>
+<ol>
+<li><p><strong>新模型与新功能</strong>（26 个）：新增对 GLM-4.7 函数调用、MiMo v2 ASR、Zyphra zaya1、SANA-WM 流式推理等模型的支持；Spec V2 推测解码全面支持 DFlash 和 Ngram；NPU&#x2F;XPU 后端持续扩展模型覆盖范围。</p>
+</li>
+<li><p><strong>性能优化</strong>（53 个）：重点围绕 AMD GPU Triton 内核融合（QK RMSNorm、sigmoid+mul、GDN QKV）、DeepSeek V3&#x2F;V4 MoE 流水线优化、Diffusion 模型渐进式分辨率和 VAE 并行解码、以及 VLM 嵌入路径 CUDA 同步消除等方面进行了深度优化。</p>
+</li>
+<li><p><strong>Bug 修复</strong>（101 个）：覆盖了推测解码（EAGLE&#x2F;Spec V2）、PD 解聚合、HiCache 分层缓存、CUDA 图运行器、多平台兼容性（AMD&#x2F;NPU&#x2F;XPU&#x2F;MacOS）等核心模块的大量稳定性修复。</p>
+</li>
+<li><p><strong>工具&#x2F;重构&#x2F;CI</strong>（127 个）：完成了 Spec V1 到 V2 的全面退役和代码清理、CUDA 图运行器&#x2F;后端重构、CI 矩阵扩展（AMD&#x2F;XPU&#x2F;NPU&#x2F;MUSA）以及 JIT 内核构建缓存优化等基础设施改进。</p>
+</li>
+<li><p><strong>文档</strong>（29 个）：密集更新了 Kimi K2.6&#x2F;K2.7、GLM-5.1、MiniMax-M3、SANA-WM 等多个模型的 Cookbook，并完善了 NPU 最佳实践和 Diffusion 架构文档。</p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2026/06/15/sglang-weekly-summary-2026-W24/">http://example.com/2026/06/15/sglang-weekly-summary-2026-W24/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/sglang/">sglang</a><a class="post-meta__tags" href="/tags/commit-log/">commit-log</a><a class="post-meta__tags" href="/tags/weekly-summary/">weekly-summary</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/06/22/sglang-weekly-summary-2026-W25/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">SGLang 每周 Commit 总结 - 2026-06-15 ~ 2026-06-21概览本周共合并 284 个 commit：    类别 数量 占比    新模型&#x2F;新功能 38 13%   性能优化 44 15%   Bug 修复 86 30%   工具&#x2F;重构&#x2F;CI 84 29%   文档 32 11%    新模型&#x2F;新功能   Commit 摘要 链接    [mtp] add rejection sampling for speculative decoding (#26312) 为投机解码添加拒绝采样功能 #26312   [sgl] wire SGLANG_OPT_SWA_RELEASE_LEAF_LOCK_AFTER_WINDOW on Unified Ca... 统一缓存接入 SWA 叶锁释放环境变量 #28161   [router] Raise chat body cap to 5 MiB for long contexts (#28742) Router chat body 上限提升至 5 MiB 支持长上下文 #...</div></div></div></a><a class="pagination-related" href="/2026/06/10/sglang-daily-summary-2026-06-09/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">SGLang 每日 Commit 总结 - 2026-06-09本文总结了 SGLang 项目在 2026-06-09 (UTC+8) 的 main 分支提交，共计 51 个 commit。 概览   类别 数量    新模型&#x2F;新功能 6   性能优化 10   Bug 修复 16   Speculative Decoding 重构 3   Diffusion&#x2F;多模态生成 3   CI&#x2F;测试 9   文档 3   其他 1    新模型&#x2F;新功能   Commit Message 总结 PR 链接    [diffusion] model: support SANA-WM with streaming support (#27531) 新增 SANA-WM 模型支持，包含流式推理能力 #27531   [XPU] Enable NVIDIA-Nemotron-3-Nano-30B-A3B-BF16 on Intel XPU backend (#24390) 在 Intel XPU 后端启用 Nemotron-3-Nano-30B-A3B 模型...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/06/01/sglang-weekly-summary-2026-W22/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-01</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">SGLang 每周 Commit 总结 - 2026-05-25 ~ 2026-05-31本文总结了 SGLang 项目在 2026-05-25 ~ 2026-05-31 (UTC+8) 的 main 分支提交，共计 286 个 commit。 概览   类别 数量    新模型&#x2F;新功能 76   性能优化 35   Bug 修复 80   工具&#x2F;重构&#x2F;CI 83   文档 12    新模型&#x2F;新功能   Commit Message 总结 PR 链接    Add periodic KV-canary stats logging and kernel-run-counter health check (#26821) 为 KV-canary 添加周期性统计日志和内核运行计数健康检查 #26821   Add a sliding-window-attention divergence reporter for the KV-canary (#26820) 为 KV-canary 添加滑动窗口注意力发散检测器 #26820   Add the...</div></div></div></a><a class="pagination-related" href="/2026/05/25/sglang-weekly-summary-2026-W21/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-05-25</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">SGLang 每周 Commit 总结 - 2026-05-18 ~ 2026-05-24本文总结了 SGLang 项目在 2026-05-18 ~ 2026-05-24 (UTC+8) 的 main 分支提交，共计 141 个 commit。 概览   类别 数量    新模型&#x2F;新功能 20   性能优化 19   Bug 修复 40   工具&#x2F;重构&#x2F;CI 53   文档 9    新模型&#x2F;新功能   Commit Message 总结 PR 链接    [observability] add ServerArgs.stat_loggers for pluggable metrics backend (#24610) 新增可插拔统计日志后端，支持自定义 metrics 采集 #24610   [CP] 1/N: Support MLA Prefill Context Parallel (#23292) 支持 MLA 模型的 Prefill 阶段上下文并行 #23292   Support piecewise CUDA graph with...</div></div></div></a><a class="pagination-related" href="/2026/07/27/sglang-weekly-summary-2026-W30/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-27</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">SGLang 每周 Commit 总结 - 2026-07-20 ~ 2026-07-26本周仅包含 1 天（7月20日）的数据，共 33 个 commit。 概览   分类 数量    新模型&#x2F;新功能 7   性能优化 3   Bug 修复 12   工具&#x2F;重构&#x2F;CI 9   文档 2   合计 33   新模型&#x2F;新功能   Commit PR Summary    02236fa3 #31681 新增 Inkling 模型支持   c41c573c #28695 GDN 支持 ReplaySSM Ring Spec-Verify 投机验证   9668d9ea #31732 支持 GPT-OSS zigzag CP 与 TRTLLM-MHA   8bf2ab9b #31649 在 CUDA 13 上启用 GPT-OSS TinyGEMM   bab1dd0d #31126 Intel XPU 启用 biased grouped topk   d1c2a1de #31777 NPU memfabric-zbal 通信层更新   7fc54...</div></div></div></a><a class="pagination-related" href="/2026/07/13/sglang-weekly-summary-2026-W28/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-13</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">SGLang 每周 Commit 总结 - 2026-07-06 ~ 2026-07-12概览本周共 260 个 commit，分类如下：    类别 数量    新模型&#x2F;新功能 32   性能优化 31   Bug 修复 82   工具&#x2F;重构&#x2F;CI 93   文档 22    新模型&#x2F;新功能   Commit Summary    #28715 [minimax-m3] Split 4/4: model + VL + glue + function-call + fp8 quant + generic infra - 新增 MiniMax-M3 模型完整支持   #30633 model: support Pi0.5 - 新增 Pi0.5 模型支持   #25381 [Diffusion] SGLang backend for GLM Image AR. Step 1 - Separate server - 新增 GLM Image AR 扩散模型后端   #30361 [diffusion] model: support LingBot...</div></div></div></a><a class="pagination-related" href="/2026/06/29/sglang-weekly-summary-2026-W26/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-29</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">SGLang 每周 Commit 总结 - 2026-06-22 ~ 2026-06-28概览本周共 294 个 commit，涵盖五大类别。重点进展：MiniMax-M3 四步拆分、解耦投机解码 IPC 协议、gRPC 原生服务端、Session Radix Cache 上线。    类别 数量    新模型&#x2F;新功能 46   性能优化 41   Bug 修复 67   工具&#x2F;重构&#x2F;CI 103   文档 37   合计 294   新模型&#x2F;新功能   Commit Summary PR    feat: first-class session identity in SGLang (#29436) 引入一等公民 Session 身份标识机制 #29436   model: support baidu unlimited-ocr (#29186) 新增百度 Unlimited-OCR 模型支持 #29186   hisparse: support NIXL DRAM KV destinations for HiSparse (#27563...</div></div></div></a><a class="pagination-related" href="/2026/06/08/sglang-weekly-summary-2026-W23/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-08</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">SGLang 每周 Commit 总结 - 2026-06-01 ~ 2026-06-07本文总结了 SGLang 项目在 2026-06-01 ~ 2026-06-07 (UTC+8) 的 main 分支提交，共计 321 个 commit。 概览   分类 数量 占比    新模型&#x2F;新功能 79 24%   性能优化 44 13%   Bug 修复 81 25%   工具&#x2F;重构&#x2F;CI 88 27%   文档 29 9%   合计 321 100%    新模型&#x2F;新功能   Commit 说明 链接    [diffusion] support tp for ideogram4 (#27393) 为 Ideogram4 扩散模型添加 TP 并行支持 #27393   Add all_to_all_single to GroupCoordinator (#27492) 为 GroupCoordinator 添加 all_to_all_single 操作 #27492   [plugin] enable OOT platforms to pr...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">John Doe</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">68</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">38</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">31</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SGLang-%E6%AF%8F%E5%91%A8-Commit-%E6%80%BB%E7%BB%93-2026-06-08-2026-06-14"><span class="toc-number">1.</span> <span class="toc-text">SGLang 每周 Commit 总结 - 2026-06-08 ~ 2026-06-14</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%A7%88"><span class="toc-number">1.1.</span> <span class="toc-text">概览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E6%A8%A1%E5%9E%8B-%E6%96%B0%E5%8A%9F%E8%83%BD"><span class="toc-number">1.2.</span> <span class="toc-text">新模型&#x2F;新功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">1.3.</span> <span class="toc-text">性能优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bug-%E4%BF%AE%E5%A4%8D"><span class="toc-number">1.4.</span> <span class="toc-text">Bug 修复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7-%E9%87%8D%E6%9E%84-CI"><span class="toc-number">1.5.</span> <span class="toc-text">工具&#x2F;重构&#x2F;CI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%A1%A3"><span class="toc-number">1.6.</span> <span class="toc-text">文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#server-args-py-%E6%96%B0%E5%A2%9E%E5%8F%82%E6%95%B0"><span class="toc-number">1.7.</span> <span class="toc-text">server_args.py 新增参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.8.</span> <span class="toc-text">新增环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.9.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/27/sglang-weekly-summary-2026-W30/" title="Untitled">Untitled</a><time datetime="2026-07-26T16:00:00.000Z" title="Created 2026-07-27 00:00:00">2026-07-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/20/sglang-weekly-summary-2026-W29/" title="Untitled">Untitled</a><time datetime="2026-07-19T16:00:00.000Z" title="Created 2026-07-20 00:00:00">2026-07-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/13/sglang-weekly-summary-2026-W28/" title="Untitled">Untitled</a><time datetime="2026-07-12T16:00:00.000Z" title="Created 2026-07-13 00:00:00">2026-07-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/06/sglang-weekly-summary-2026-W27/" title="Untitled">Untitled</a><time datetime="2026-07-05T16:00:00.000Z" title="Created 2026-07-06 00:00:00">2026-07-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/29/sglang-weekly-summary-2026-W26/" title="Untitled">Untitled</a><time datetime="2026-06-28T16:00:00.000Z" title="Created 2026-06-29 00:00:00">2026-06-29</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By John Doe</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
